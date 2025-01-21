@@ -338,7 +338,10 @@ public enum SocialDistance {
     GENTILANDIA_TERMINALANTONIOBEZERRA("Gentilandia", "Terminal Antônio Bezerra", 7000),
     SAOLUIZ_PORTODASDUNAS("São Luiz", "Porto das Dunas", 29000),
     PORTODASDUNAS_APARTAMENTO("Porto das Dunas", "Apartamento", 29000),
-    APARTAMENTO_PAODEACUCAR("Apartamento", "Pão de Açúcar", 2800);
+    APARTAMENTO_PAODEACUCAR("Apartamento", "Pão de Açúcar", 2800),
+    SAOGONCALODOAMARANTE_APARTAMENTO("São Gonçalo do Amarante", "Apartamento", 65000),
+    APARTAMENTO_CASABRENA("Apartamento", "Casa Brena", 62200),
+    CASABRENA_CASAEDUARDA("Casa Brena", "Casa Eduarda", 16300);
 
     private final String locationOne;
     private final String locationTwo;

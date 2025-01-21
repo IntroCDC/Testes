@@ -497,6 +497,11 @@ public enum SocialRegister {
     E94(94, "Ida no Krone Pós Curso",
             new SocialDay[]{
                     new SocialDay("17/01/2025", "-Casa", "Grau Técnico", "Apartamento", "Krone", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E95(95, "Pós Formatura de Prima e 4 Idas",
+            new SocialDay[]{
+                    new SocialDay("19/01/2025", "-Casa", "São Gonçalo do Amarante", "Apartamento", "Casa Brena", "Casa Eduarda", "Casa Lucas", "Taíba", "Apartamento"),
+                    new SocialDay("20/01/2025", "-Apartamento", "Casa Lucas", "Casa Eduarda", "Casa Lucas", "Apartamento", "-Casa", "-Apartamento", "-Casa", "-Apartamento", "Pague Menos", "Casa Lucas", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
