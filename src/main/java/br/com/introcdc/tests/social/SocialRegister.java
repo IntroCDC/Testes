@@ -506,6 +506,10 @@ public enum SocialRegister {
     E96(96, "Ida Rápida na Pague Menos Pós Curso",
             new SocialDay[]{
                     new SocialDay("22/01/2025", "-Casa", "Grau Técnico", "-Casa")
+            }),
+    E97(97, "Entrega de Documentos na Grau",
+            new SocialDay[]{
+                    new SocialDay("24/01/2025", "-Casa", "Grau Técnico", "-Casa", "Grau Técnico", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
