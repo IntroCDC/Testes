@@ -341,7 +341,8 @@ public enum SocialDistance {
     APARTAMENTO_PAODEACUCAR("Apartamento", "Pão de Açúcar", 2800),
     SAOGONCALODOAMARANTE_APARTAMENTO("São Gonçalo do Amarante", "Apartamento", 65000),
     APARTAMENTO_CASABRENA("Apartamento", "Casa Brena", 62200),
-    CASABRENA_CASAEDUARDA("Casa Brena", "Casa Eduarda", 16300);
+    CASABRENA_CASAEDUARDA("Casa Brena", "Casa Eduarda", 16300),
+    CLARINDODEQUEIROZ_CASA("Clarindo de Queiroz", "Casa", 2800);
 
     private final String locationOne;
     private final String locationTwo;
