@@ -3,7 +3,6 @@ package br.com.introcdc.tests.files;
  * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 04:37
  */
 
-import br.com.introcdc.tests.Main;
 import br.com.introcdc.tests.database.FileComponents;
 import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.ID3v2;
@@ -13,18 +12,51 @@ import com.mpatric.mp3agic.Mp3File;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class MusicOrganizer {
 
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            fullApplySetup(new File("C:/Users/Bruno/Downloads"), new File("C:/Users/Bruno/Downloads"));
-        } else {
-            String arg = Main.arg(args);
-            if (arg.split(" / ", 2).length != 2) {
-                System.out.println("Digite as duas pastas separado por ' / '!");
-            } else {
-                fullApplySetup(new File(arg.split(" / ", 2)[0]), new File(arg.split(" / ", 2)[1]));
+    public static void main(String[] args) throws Exception {
+        applyAlbum(new File("F:/Musicas/Mister IA/"));
+    }
+
+    public static void applyAlbum(File folder) throws Exception {
+        for (File file : folder.listFiles()) {
+            if (!file.getName().endsWith(".mp3")) {
+                continue;
+            }
+
+            System.out.println("Processando: " + file.getName());
+            try {
+                Mp3File mp3file = new Mp3File(file.getAbsolutePath());
+                if (mp3file.hasId3v1Tag()) {
+                    ID3v1 id3v1Tag = mp3file.getId3v1Tag();
+                    System.out.println("1: " + id3v1Tag.getAlbum());
+                    if (id3v1Tag.getAlbum() == null || id3v1Tag.getAlbum().isEmpty()) {
+                        continue;
+                    }
+                    id3v1Tag.setAlbum("");
+                }
+                if (mp3file.hasId3v2Tag()) {
+                    ID3v2 id3v2Tag = mp3file.getId3v2Tag();
+                    System.out.println("2: " + id3v2Tag.getAlbum());
+                    if (id3v2Tag.getAlbum() == null || id3v2Tag.getAlbum().isEmpty()) {
+                        continue;
+                    }
+                    id3v2Tag.setAlbum("");
+                } else {
+                    ID3v2 id3v2Tag = new ID3v24Tag();
+                    System.out.println("3: " + id3v2Tag.getAlbum());
+                    if (id3v2Tag.getAlbum() == null || id3v2Tag.getAlbum().isEmpty()) {
+                        break;
+                    }
+                    id3v2Tag.setAlbum("");
+                    mp3file.setId3v2Tag(id3v2Tag);
+                }
+                mp3file.save(file.getAbsolutePath().replace(".mp3", "temp.mp3"));
+                FileComponents.deleteFile(file);
+                new File(file.getAbsolutePath().replace(".mp3", "temp.mp3")).renameTo(new File(file.getParentFile(), file.getName()));
+            } catch (Exception ignored) {
             }
         }
     }
@@ -53,7 +85,7 @@ public class MusicOrganizer {
             }
             fileName = fileName.split(" \\(")[0];
             fileName = fileName.replace(".mp3", ".png");
-            File cover = new File(file.getName().startsWith("Mister IA") ? pngfolder.getParentFile() : pngfolder, fileName + (fileName.endsWith(".png") ? "" : ".png"));
+            File cover = new File(file.getName().startsWith("Mister IA") ? pngfolder.getParentFile() : pngfolder, fileName.replace("ç", "c") + (fileName.endsWith(".png") ? "" : ".png"));
             if (!cover.exists()) {
                 System.out.println("cover não encontrado " + file.getName() + " - " + cover.getName());
                 continue;
@@ -114,6 +146,29 @@ public class MusicOrganizer {
                 }
                 id3v2Tag.setArtist(author);
                 id3v2Tag.setTitle(musicName);
+                mp3file.setId3v2Tag(id3v2Tag);
+            }
+            mp3file.save(file.getAbsolutePath().replace(".mp3", "temp.mp3"));
+            FileComponents.deleteFile(file);
+            new File(file.getAbsolutePath().replace(".mp3", "temp.mp3")).renameTo(new File(file.getParentFile(), file.getName()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateAlbum(File file, String album) {
+        try {
+            Mp3File mp3file = new Mp3File(file.getAbsolutePath());
+            if (mp3file.hasId3v1Tag()) {
+                ID3v1 id3v1Tag = mp3file.getId3v1Tag();
+                id3v1Tag.setAlbum(album);
+            }
+            if (mp3file.hasId3v2Tag()) {
+                ID3v2 id3v2Tag = mp3file.getId3v2Tag();
+                id3v2Tag.setAlbum(album);
+            } else {
+                ID3v2 id3v2Tag = new ID3v24Tag();
+                id3v2Tag.setAlbum(album);
                 mp3file.setId3v2Tag(id3v2Tag);
             }
             mp3file.save(file.getAbsolutePath().replace(".mp3", "temp.mp3"));

@@ -8,104 +8,87 @@ import br.com.introcdc.tests.database.GlobalDatabase;
 import br.com.introcdc.tests.database.query.DatabaseQuery;
 import br.com.introcdc.tests.database.query.OrderType;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.util.*;
 
 public class DatabaseConversor {
 
     public static void main(String[] args) throws Exception {
-        convertPackages();
+        GlobalDatabase.reloadConnection();
+        ResultSet resultSet = DatabaseUtils.selectFromTable("mgmaps").executeQuery();
+        while (resultSet.next()) {
+            File test = new File("C:\\Kindome\\site\\assets\\images\\maps\\" + resultSet.getString("mapBase").toLowerCase() + ".png");
+            if (!test.exists()) {
+                System.out.println("mapa: " + test.getName());
+            }
+        }
     }
 
     public static void convertPackages() throws Exception {
-        ArrayList<String> multiple = new ArrayList<>(Arrays.asList("hardcore_homes", "used_key", "%pet_%", "creative_worlds", "friends",
-                "friend_requests_sent", "friend_requests", "blocked_friends", "%_kit%", "tag_list", "permissions", "content_worlds"));
-        ArrayList<String> keepNew = new ArrayList<>(Arrays.asList(
-                "tag", "whoGaveGroup", "youtube", "hardcore_homes", "instagram", "ip", "password", "group",
-                "description", "twitch", "used_key", "%pet_%", "creative_worlds", "friends",
-                "friend_requests_sent", "friend_requests", "blocked_friends", "partyNpc", "winSubTitle",
-                "winTotem", "winSoundEffect", "winTitleEffect", "miniGameJoinMessage", "miniGameKillMessage",
-                "%_kit%", "%_skit%", "botLanguage", "botGender", "tag_list", "discord",
-                "miniGameQuitMessage", "miniGameDeathMessage", "permissions", "minigameCustomCage",
-                "bedWarsFavorites", "clanName", "clanTag", "clanGroup", "clanDescription", "musicDiscord",
-                "minigameCustomProjectile", "friendsCommand", "clanFF", "twitter", "github", "lastGroup",
-                "states", "content_worlds"
-        ));
-        ArrayList<String> addNew = new ArrayList<>(Arrays.asList(
-                "form", "Sub-Título (Vitória)", "Chapéu", "Roupa", "Gaiola", "NPC do Party",
-                "Acessório", "Pet", "Particula", "Transformações", "Efeito Sonoro (Vitória)",
-                "Mensagem de Saída", "Mensagem de Morte", "Mensagem de Abate", "Cabeça",
-                "Mensagem de Entrada", "Totem (Vitória)", "Título (Vitória)", "minigame_configs",
-                "clanAllys", "Projéteis", "custom_minigame", "vip_keys", "customSequences",
-                "supermine64_objetives", "supermine64_items"
-        ));
+        ArrayList<String> multiple = new ArrayList<>(Arrays.asList("hardcore_homes", "used_key", "pet_", "creative_worlds", "friends",
+                "friend_requests_sent", "friend_requests", "blocked_friends", "_kit", "tag_list", "permissions", "content_worlds"));
 
         GlobalDatabase.reloadConnection();
 
         List<String> already = new ArrayList<>();
         System.out.println("Processando...");
 
-        List<ArrayList<String>> allLists = List.of(keepNew, addNew);
-        for (ArrayList<String> list : allLists) {
-            for (String string : keepNew) {
-                System.out.println("Processando new: " + string + "...");
-                DatabaseQuery newQuery = DatabaseUtils.selectFromTable("packages_new");
-                if (string.startsWith("%")) {
-                    String info = string.substring(1, string.length() - 1);
-                    newQuery.whereLike("package_type", info);
-                } else {
-                    newQuery.whereEquals("package_type", string);
-                }
-                newQuery.orderBy(OrderType.ASC, "id");
-                ResultSet newResult = newQuery.executeQuery();
-                while (newResult.next()) {
-                    String kuid = newResult.getString("kuid");
-                    String id = newResult.getString("package_type");
-                    String value = newResult.getString("package_name");
-                    String key;
-                    if (multiple.contains(string) || addNew.contains(string)) {
-                        key = kuid + id + value;
-                    } else {
-                        key = kuid + id;
-                    }
-                    already.add(key);
-                    DatabaseQuery.insertIntoTable("packages")
-                            .openArrays()
-                            .setInArray("kuid", kuid)
-                            .setInArray("package_type", id)
-                            .setInArray("package_name", value)
-                            .closeArrays().executeUpdate();
-                }
-                DatabaseQuery oldQuery = DatabaseUtils.selectFromTable("packages_old");
-                if (string.startsWith("%")) {
-                    String info = string.substring(1, string.length() - 1);
-                    oldQuery.whereLike("package_type", info);
-                } else {
-                    oldQuery.whereEquals("package_type", string);
-                }
-                oldQuery.orderBy(OrderType.ASC, "id");
-                ResultSet oldResult = oldQuery.executeQuery();
-                while (oldResult.next()) {
-                    String kuid = oldResult.getString("kuid");
-                    String id = oldResult.getString("package_type");
-                    String value = oldResult.getString("package_name");
-                    String key;
-                    if (multiple.contains(string) || addNew.contains(string)) {
-                        key = kuid + id + value;
-                    } else {
-                        key = kuid + id;
-                    }
-                    if (already.contains(key)) {
-                        continue;
-                    }
-                    DatabaseQuery.insertIntoTable("packages")
-                            .openArrays()
-                            .setInArray("kuid", kuid)
-                            .setInArray("package_type", id)
-                            .setInArray("package_name", value)
-                            .closeArrays().executeUpdate();
+        System.out.println("Processando...");
+        DatabaseQuery newQuery = DatabaseUtils.selectFromTable("packages_new");
+        newQuery.orderBy(OrderType.ASC, "id");
+        ResultSet newResult = newQuery.executeQuery();
+        while (newResult.next()) {
+            String kuid = newResult.getString("kuid");
+            String id = newResult.getString("package_type");
+            String value = newResult.getString("package_name");
+            String key;
+            boolean found = false;
+            for (String mul : multiple) {
+                if (id.contains(mul)) {
+                    found = true;
+                    break;
                 }
             }
+            if (found) {
+                key = kuid + id + value;
+            } else {
+                key = kuid + id;
+            }
+            already.add(key);
+            DatabaseQuery.insertIntoTable("packages")
+                    .openArrays()
+                    .setInArray("kuid", kuid)
+                    .setInArray("package_type", id)
+                    .setInArray("package_name", value)
+                    .closeArrays().executeUpdate();
+        }
+        DatabaseQuery oldQuery = DatabaseUtils.selectFromTable("packages_old");
+        oldQuery.orderBy(OrderType.ASC, "id");
+        ResultSet oldResult = oldQuery.executeQuery();
+        while (oldResult.next()) {
+            String kuid = oldResult.getString("kuid");
+            String id = oldResult.getString("package_type");
+            String value = oldResult.getString("package_name");
+            String key;
+            boolean found = false;
+            for (String mul : multiple) {
+                if (id.contains(mul)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                key = kuid + id + value;
+            } else {
+                key = kuid + id;
+            }
+            DatabaseQuery.insertIntoTable("packages")
+                    .openArrays()
+                    .setInArray("kuid", kuid)
+                    .setInArray("package_type", id)
+                    .setInArray("package_name", value)
+                    .closeArrays().executeUpdate();
         }
         System.out.println("PRONTO!");
     }
