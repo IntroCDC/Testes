@@ -514,6 +514,12 @@ public enum SocialRegister {
     E98(98, "Entrega de Camisa, Máscara e Compra de Capacete",
             new SocialDay[]{
                     new SocialDay("29/01/2025", "-Casa", "Grau Técnico", "-Clarindo de Queiroz", "-Casa")
+            }),
+    E99(99, "Pós Pintura da Moto e Curso",
+            new SocialDay[]{
+                    new SocialDay("01/02/2025", "-Casa", "Casa Eduarda", "Ibis", "Apartamento", "Centro", "Apartamento", "Iguatemi"),
+                    new SocialDay("02/02/2025", "-Iguatemi", "Apartamento", "Órbita Blue", "Apartamento", "Casa Eduarda", "Mãe Rainha", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "Mãe Rainha", "Casa Lucas"),
+                    new SocialDay("03/02/2025", "-Casa Lucas", "Casa Eduarda", "Apartamento", "-Casa", "-Apartamento", "Grau Técnico", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

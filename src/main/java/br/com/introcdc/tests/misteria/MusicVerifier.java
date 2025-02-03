@@ -18,10 +18,19 @@ public class MusicVerifier {
         System.out.println("Dê notas de 0 a 100!");
         mp3 = new MP3Musica();
         scanner = new Scanner(System.in);
+        List<File> toSee = new ArrayList<>();
         for (File file : new File("F:/Musicas/IA").listFiles()) {
             if (!file.getName().endsWith(".mp3")) {
                 continue;
             }
+            if (verify(file)) {
+                continue;
+            }
+            toSee.add(file);
+        }
+
+        System.out.println("Músicas para analisar: " + toSee.size());
+        for (File file : toSee) {
             verifyMusic(file);
         }
 
@@ -48,9 +57,6 @@ public class MusicVerifier {
     public static void verifyMusic(File file) {
         mp3.stopPlaying();
         mp3 = new MP3Musica();
-        if (verify(file)) {
-            return;
-        }
         mp3.tocar(file);
         mp3.start();
         System.out.print(file.getName() + ": ");
@@ -63,7 +69,15 @@ public class MusicVerifier {
             fileName = fileName.replace(" " + i, "");
         }
         File check = new File("F:/Musicas/Mister IA/Mister IA - " + fileName);
-        return check.exists();
+        if (check.exists()) {
+            return true;
+        }
+        for (int i = 20; i > 1; i--) {
+            if (file.getName().endsWith(i + ".mp3")) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

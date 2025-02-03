@@ -12,12 +12,11 @@ import com.mpatric.mp3agic.Mp3File;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class MusicOrganizer {
 
     public static void main(String[] args) throws Exception {
-        applyAlbum(new File("F:/Musicas/Mister IA/"));
+        fullApply(new File("C:/Users/Bruno/Downloads"), new File("C:/Users/Bruno/Downloads"));
     }
 
     public static void applyAlbum(File folder) throws Exception {
