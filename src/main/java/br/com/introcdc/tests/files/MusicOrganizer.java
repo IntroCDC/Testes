@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 public class MusicOrganizer {
 
     public static void main(String[] args) throws Exception {
-        fullApply(new File("C:/Users/Bruno/Downloads"), new File("C:/Users/Bruno/Downloads"));
+        fullApply(new File("C:/Users/Bruno/Downloads"), new File("F:/Imagens/Random/ia/Mister IA/Descartados"));
     }
 
     public static void applyAlbum(File folder) throws Exception {
