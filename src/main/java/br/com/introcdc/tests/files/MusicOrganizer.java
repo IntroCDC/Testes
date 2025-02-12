@@ -12,11 +12,68 @@ import com.mpatric.mp3agic.Mp3File;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MusicOrganizer {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        updateDownloadsFolder();
+    }
+
+    public static void updateDownloadsFolder() {
         fullApply(new File("C:/Users/Bruno/Downloads"), new File("F:/Imagens/Random/ia/Mister IA/Descartados"));
+    }
+
+    public static void updateOthersFolder() {
+        String pastaCaminho = "F:/Musicas/IA Others/"; // Defina o caminho da pasta com os arquivos MP3
+        File pasta = new File(pastaCaminho);
+
+        if (!pasta.exists() || !pasta.isDirectory()) {
+            System.out.println("Pasta inválida!");
+            return;
+        }
+
+        File[] arquivos = pasta.listFiles((dir, name) -> name.toLowerCase().endsWith(".mp3"));
+        if (arquivos == null || arquivos.length == 0) {
+            System.out.println("Nenhum arquivo MP3 encontrado.");
+            return;
+        }
+
+        Map<String, List<File>> grupos = new HashMap<>();
+        Pattern padrao = Pattern.compile("^IA - (.*?)(?: (\\d+))?\\.mp3$");
+
+        for (File arquivo : arquivos) {
+            Matcher matcher = padrao.matcher(arquivo.getName());
+            if (matcher.matches()) {
+                String nomeBase = matcher.group(1).trim();
+                grupos.putIfAbsent(nomeBase, new ArrayList<>());
+                grupos.get(nomeBase).add(arquivo);
+            }
+        }
+
+        for (Map.Entry<String, List<File>> entrada : grupos.entrySet()) {
+            List<File> listaArquivos = entrada.getValue();
+            listaArquivos.sort(Comparator.comparing(File::getName));
+
+            int contador = 1;
+            for (File arquivo : listaArquivos) {
+                String novoNome;
+                do {
+                    novoNome = "IA - " + entrada.getKey() + " " + contador + ".mp3";
+                    contador++;
+                } while (new File(pasta, novoNome).exists());
+
+                File novoArquivo = new File(pasta, novoNome);
+                if (!arquivo.renameTo(novoArquivo)) {
+                    System.out.println("Erro ao renomear: " + arquivo.getName());
+                } else {
+                    System.out.println("Renomeado: " + arquivo.getName() + " -> " + novoNome);
+                    updateFile(new File(pasta, novoNome));
+                }
+            }
+        }
     }
 
     public static void applyAlbum(File folder) throws Exception {
