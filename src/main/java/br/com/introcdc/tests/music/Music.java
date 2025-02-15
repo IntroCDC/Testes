@@ -323,6 +323,22 @@ public enum Music {
         return getRemasteredFile().exists();
     }
 
+    public String getMusicURL() {
+        return getMusicsURL() + getAuthor().replace(" ", "%20") + "/" + getMusicFileName().replace(" ", "%20");
+    }
+
+    public String getSubVersionMusicURL(int number) {
+        return getMusicURL() + getAuthor().replace(" ", "%20") + "%20Others/" + getMusicName() + "%20" + number + ".mp3";
+    }
+
+    public String getAlternativeFolder(String fileName) {
+        return getAuthor() + (new File(getMusicsFolder() + getAuthor() + " Cover", fileName).exists() ? " Cover" : " Cover Others");
+    }
+
+    public String getMusicAlternativeURL(String fileName) {
+        return getMusicsURL() + getAlternativeFolder(fileName) + "/" + fileName.replace(" ", "%20");
+    }
+
     public List<File> getSubVersionsMusicFiles() {
         List<File> files = new ArrayList<>();
         for (int i = 1; i <= getSubVersions(); i++) {
@@ -351,14 +367,9 @@ public enum Music {
     public List<File> getAlternativeVersionsFiles() {
         List<File> files = new ArrayList<>();
         for (String alternativeName : getAlternativeVersions()) {
-            File file = new File(getMusicsFolder() + getAuthor() + " Cover/" + getAuthor() + " - " + alternativeName + ".mp3");
+            File file = new File(getMusicsFolder() + getAlternativeFolder(alternativeName) + "/" + getAuthor() + " - " + alternativeName + ".mp3");
             if (file.exists()) {
                 files.add(file);
-                continue;
-            }
-            File subFile = new File(getMusicsFolder() + getAuthor() + " Cover Others/" + getAuthor() + " - " + alternativeName + ".mp3");
-            if (subFile.exists()) {
-                files.add(subFile);
             }
         }
         return files;
@@ -375,6 +386,10 @@ public enum Music {
 
     public static String getMusicsFolder() {
         return "F:/Musicas/";
+    }
+
+    public static String getMusicsURL() {
+        return "http://musics.introcdc.com/";
     }
 
 }
