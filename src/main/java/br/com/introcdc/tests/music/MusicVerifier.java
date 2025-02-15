@@ -1,4 +1,4 @@
-package br.com.introcdc.tests.misteria;
+package br.com.introcdc.tests.music;
 /*
  * Written by IntroCDC, Bruno Coêlho at 01/11/2024 - 00:47
  */

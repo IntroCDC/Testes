@@ -19,6 +19,7 @@ import br.com.introcdc.tests.instagram.InstagramTools;
 import br.com.introcdc.tests.introcdc.VideoFrames;
 import br.com.introcdc.tests.kindome.ChatReader;
 import br.com.introcdc.tests.love.LoveMeter;
+import br.com.introcdc.tests.music.MusicOrganizer;
 import br.com.introcdc.tests.narrator.CameraNarrator;
 import br.com.introcdc.tests.ping.PingTest;
 import br.com.introcdc.tests.social.SocialCalculator;

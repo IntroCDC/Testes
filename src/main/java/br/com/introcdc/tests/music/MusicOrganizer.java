@@ -1,4 +1,4 @@
-package br.com.introcdc.tests.files;
+package br.com.introcdc.tests.music;
 /*
  * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 04:37
  */
@@ -17,6 +17,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MusicOrganizer {
+
+    public static boolean MISTER_IA = false;
 
     public static void main(String[] args) {
         updateDownloadsFolder();
@@ -141,7 +143,7 @@ public class MusicOrganizer {
             }
             fileName = fileName.split(" \\(")[0];
             fileName = fileName.replace(".mp3", ".png");
-            File cover = new File(file.getName().startsWith("Mister IA") ? pngfolder.getParentFile() : pngfolder, fileName.replace("ç", "c") + (fileName.endsWith(".png") ? "" : ".png"));
+            File cover = new File(file.getName().startsWith("Mister IA") && MISTER_IA ? pngfolder.getParentFile() : pngfolder, fileName.replace("ç", "c") + (fileName.endsWith(".png") ? "" : ".png"));
             if (!cover.exists()) {
                 System.out.println("cover não encontrado " + file.getName() + " - " + cover.getName());
                 continue;
