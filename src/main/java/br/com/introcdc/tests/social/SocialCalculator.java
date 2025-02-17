@@ -31,7 +31,7 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "02/02/2025 - 21:33 - Casa Lucas";
+    public static String LK = "16/02/2025 - 21:00 - Casa Eduarda";
     public static String LS = "02/03/2024 - 22:00 - Apartamento";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
