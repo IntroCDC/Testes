@@ -347,6 +347,18 @@ public enum Music {
         return getRemasteredFile().exists();
     }
 
+    public String getInstrumentalPath() {
+        return getAuthor() + " Stems/" + getAuthor() + " - " + getMusicName() + " (Instrumental).mp3";
+    }
+
+    public String getVocalsPath() {
+        return getAuthor() + " Stems/" + getAuthor() + " - " + getMusicName() + " (Vocals).mp3";
+    }
+
+    public boolean hasStems() {
+        return new File(getMusicsFolder() + getInstrumentalPath()).exists() && new File(getMusicsFolder() + getVocalsPath()).exists();
+    }
+
     public String getMusicURL() {
         return getMusicsURL() + getAuthor().replace(" ", "%20") + "/" + getMusicFileName().replace(" ", "%20");
     }
@@ -367,8 +379,18 @@ public enum Music {
         return getMusicsURL() + getAuthor().replace(" ", "%20") + "%20Remastered/" + getAuthor().replace(" ", "%20") + "%20-%20" + getMusicName().replace(" ", "%20") + "%20(Remastered).mp3";
     }
 
+    public String getInstrumentalURL() {
+        return getMusicsURL() + getAuthor().replace(" ", "%20") + "%20Stems/" + getAuthor().replace(" ", "%20") + "%20-%20" + getMusicName().replace(" ", "%20") + "%20(Instrumental).mp3";
+    }
+
+    public String getVocalsURL() {
+        return getMusicsURL() + getAuthor().replace(" ", "%20") + "%20Stems/" + getAuthor().replace(" ", "%20") + "%20-%20" + getMusicName().replace(" ", "%20") + "%20(Vocals).mp3";
+    }
+
     public String getMusicURL(String alternative, int subVersion) {
-        return alternative != null ? getMusicAlternativeURL(alternative) : subVersion == 0 ? getRemasteredURL() : subVersion > 0 ? getSubVersionMusicURL(subVersion) : getMusicURL();
+        return alternative != null ? getMusicAlternativeURL(alternative) : subVersion == 0 ? getRemasteredURL() :
+                subVersion == -1 ? getInstrumentalURL() : subVersion == -2 ? getVocalsURL() :
+                        subVersion > 0 ? getSubVersionMusicURL(subVersion) : getMusicURL();
     }
 
     public List<File> getSubVersionsMusicFiles() {
