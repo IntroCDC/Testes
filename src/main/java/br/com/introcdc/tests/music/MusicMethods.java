@@ -7,12 +7,56 @@ import com.google.gson.JsonObject;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MusicMethods {
 
     public static void main(String[] args) throws Exception {
-        jsonCreator();
+        discordUnlocker();
+    }
+
+    public static void discordUnlocker() {
+        List<Music> unlocked = new ArrayList<>(
+                List.of(Music.REINOS_DE_JOGO,
+                        Music.VOCE_FEZ_COCO,
+                        Music.RAFAEL_AULER_3_5,
+                        Music.RITUAL_DAS_GATINHAS,
+                        Music.JINGLE_DAS_GATINHAS,
+                        Music.BODE,
+                        Music.KINDOME,
+                        Music.COCO_NA_ARARIUS,
+                        Music.HACKINGS,
+                        Music.ENGRACADAO,
+                        Music.ENGRACADAO_VERSAO_PISEIRO,
+                        Music.SANIDADE_MENTAL,
+                        Music.STILL_WATER,
+                        Music.AMOR_DE_JOGO,
+                        Music.GOSTO_DE_COCO,
+                        Music.CHEGOU_O_REMEDIO,
+                        Music.ONI_CHAN,
+                        Music.CLAUDINHO,
+                        Music.DESTROY_EVERYTHING,
+                        Music.ARROCHA_DO_JOVEM_DINAMICO,
+                        Music.KIRITO_O_BODE,
+                        Music.THE_IMPOSSIBLE,
+                        Music.THE_IMPOSSIBLE_VERSAO_METAL,
+                        Music.OLD_BURNING_LOVE,
+                        Music.PARABENS_ANA,
+                        Music.NAO_SABE_PULAR)
+        );
+        Map<Integer, Integer> amount = new HashMap<>();
+        System.out.println("\uD83D\uDD13 As Desbloqueadas: (" + unlocked.size() + "/" + Music.values().length + ")");
+        for (Music music : unlocked) {
+            amount.put(music.getAlbum(), amount.getOrDefault(music.getAlbum(), 0) + 1);
+            System.out.println(" - " + music.getMusicName() + " (" + music.getShortAlbumName() + " #" + music.getNumber() + (music.isMisterIA() ? " / Mister IA" : "") + ") / " + music.getCreation());
+        }
+        System.out.println();
+        System.out.println("Álbuns:");
+        for (int i = 0; i <= 2; i++) {
+            System.out.println(" - " + Music.albumName(i) + ": " + amount.get(i) + "/" + Music.getMusicsAmountInAlbum(i));
+        }
     }
 
     public static void printPerAlbum() {

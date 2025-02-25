@@ -31,8 +31,9 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "16/02/2025 - 21:00 - Casa Eduarda";
+    public static String LK = "23/02/2025 - 12:00 - Casa Eduarda";
     public static String LS = "02/03/2024 - 22:00 - Apartamento";
+    public static String LS_B = "21/02/2025 - 02:30 - Apartamento";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();
@@ -77,6 +78,7 @@ public class SocialCalculator {
         print();
         print("LK: " + LK);
         print("LS: " + LS);
+        print("LS_B: " + LS_B);
         print();
 
         print("Dias Juntos: " + DAYS_TOGETHER + " Dias");

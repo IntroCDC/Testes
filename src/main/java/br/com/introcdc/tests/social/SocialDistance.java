@@ -347,6 +347,7 @@ public enum SocialDistance {
     CASAEDUARDA_MAERAINHA("Casa Eduarda", "Mãe Rainha", 1200),
     MAERAINHA_CASALUCAS("Mãe Rainha", "Casa Lucas", 500),
     IBIS_CASATIAEDUARDA("Ibis", "Casa Tia Eduarda", 27900),
+    SMARTFIT_BRAZAO("Smart Fit", "Brazão", 1000),
     ;
 
     private final String locationOne;

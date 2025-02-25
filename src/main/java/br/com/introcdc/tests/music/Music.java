@@ -130,6 +130,7 @@ public enum Music {
     EU_TE_AMO_EDUARDA("Eu Te Amo Eduarda", false, "29/12/2024 - 13:09", 2, 17, 1),
     EX_DJS("Ex DJs", false, "08/09/2024 - 16:22", 1, 25, 1),
     FAYE("Faye", false, "02/01/2025 - 17:10", 2, 44, 1),
+    FELICIDADE("Felicidade", false, "22/02/2025 - 16:23", 2, 79, 1),
     FERNANDO_NO_APARTAMENTO("Fernando no Apartamento", false, "12/11/2024 - 10:28", 1, 61, 3),
     FIOS_REBELDES("Fios Rebeldes", false, "01/05/2024 - 09:49", 0, 9, 0),
     FOGUETE_TRICOLOR("Foguete Tricolor", false, "29/08/2024 - 02:36", 1, 11, 7),
@@ -150,7 +151,8 @@ public enum Music {
     JAVA_CODING("Java Coding", false, "22/01/2025 - 22:00", 2, 57, 1),
     JINGLE_DAS_GATINHAS("Jingle das Gatinhas", false, "19/06/2024 - 00:33", 0, 35, 0, "Jingle das Gatinhas (Versão Metal)"),
     JOAO_BRENO_E_O_LEGO("João Breno e o Lego", false, "15/09/2024 - 12:29", 1, 29, 1),
-    JUBARACACHUBA("Jubaracachuba", false, "20/06/2024 - 20:59", 0, 41, 3),
+    JOSE("José", false, "22/02/2025 - 12:46", 2, 78, 1),
+    JUBARACACHUBA("Jubaracachuba", false, "20/06/2024 - 20:59", 0, 41, 3, "Jubaracachuba (Versão Alternativa)", "Jubaracachuba (Versão Alternativa 1)"),
     KINDOME("Kindome", false, "31/08/2024 - 04:03", 1, 13, 3),
     KIRITO_O_BODE("Kirito o Bode", false, "11/02/2025 - 00:58", 2, 72, 3, "Kirito o Bode (Versão Kirito)"),
     KIRITO("Kirito", false, "31/08/2024 - 01:30", 1, 12, 1),
@@ -177,6 +179,7 @@ public enum Music {
     MISSOES_PARA_HYAN("Missões para Hyan", false, "05/12/2024 - 20:20", 2, 8, 3),
     MUSHMC("MushMC", false, "10/02/2025 - 19:11", 2, 71, 1),
     MUSICA_PARA_CAGAR("Música para Cagar", false, "04/07/2024 - 20:58", 0, 52, 5),
+    NAO_SABE_PULAR("Não Sabe Pular", false, "24/02/2025 - 11:48", 2, 80, 7),
     NATUREZA("Natureza", false, "21/10/2024 - 02:23", 1, 51, 7),
     NAYARA("Nayara", false, "22/07/2024 - 02:52", 0, 79, 1),
     NOSSO_RELACIONAMENTO("Nosso Relacionamento", false, "14/11/2024 - 18:48", 1, 66, 1),
@@ -197,6 +200,7 @@ public enum Music {
     PESSOA_ACIMA("Pessoa Acima", false, "08/01/2025 - 17:47", 2, 49, 3),
     PLUGIN_DE_REPORT("Plugin de Report", false, "23/10/2024 - 21:08", 1, 54, 0),
     POMBO("Pombo", false, "09/09/2024 - 18:26", 1, 27, 1),
+    PORTUGUES("Português", false, "24/02/2025 - 15:13", 2, 81, 1),
     PROCURA_DE_EMPREGO("Procura de Emprego", false, "01/07/2024 - 08:31", 0, 45, 1),
     PROMESSA_DA_SULAMERICANA("Promessa da Sulamericana", false, "26/09/2024 - 19:13", 1, 39, 1),
     PUDIM_E_TORTA_DE_FRANGO("Pudim e Torta de Frango", false, "31/07/2024 - 17:35", 0, 86, 1),
@@ -227,8 +231,8 @@ public enum Music {
     TEXTAO_EM_PIANO("Textão em Piano", false, "10/07/2024 - 22:53", 0, 60, 1),
     TEXTAO_EM_SERTANEJO("Textão em Sertanejo", false, "10/07/2024 - 22:52", 0, 59, 1),
     THE_END("The End", false, "05/02/2025 - 01:29", 2, 64, 4),
-    THE_IMPOSSIBLE("The Impossible", false, "15/02/2025 - 04:35", 2, 74, 5),
-    THE_IMPOSSIBLE_VERSAO_METAL("The Impossible (Versão Metal)", false, "18/02/2025 - 12:30", 2, 75, 0, "The Impossible (Versão Metal 1)", "The Impossible (Versão Metal 2)"),
+    THE_IMPOSSIBLE("The Impossible", false, "15/02/2025 - 04:35", 2, 74, 5, "The Impossible (Versão Épica 1)", "The Impossible (Versão Épica 2)"),
+    THE_IMPOSSIBLE_VERSAO_METAL("The Impossible (Versão Metal)", false, "18/02/2025 - 12:30", 2, 75, 0, "The Impossible (Versão Metal 1)", "The Impossible (Versão Metal 2)", "The Impossible (Versão Metal 3)", "The Impossible (Versão Metal 4)", "The Impossible (Versão Metal 5)", "The Impossible (Versão Metal 6)"),
     TIA_FOFA("Tia Fofa", false, "29/12/2024 - 14:07", 2, 20, 1),
     TODO_MUNDO("Todo Mundo", false, "04/07/2024 - 13:04", 0, 49, 1),
     TODOS_NA_SALA("Todos na Sala", false, "01/01/2025 - 15:01", 2, 38, 1),
@@ -305,6 +309,10 @@ public enum Music {
 
     public String getAlbumName() {
         return albumName(getAlbum());
+    }
+
+    public String getShortAlbumName() {
+        return shortAlbumName(getAlbum());
     }
 
     public String getCompleteName() {
@@ -440,6 +448,25 @@ public enum Music {
             case 2 -> "Tempos Modernos";
             default -> "Revolução Sonora";
         };
+    }
+
+    public static String shortAlbumName(int album) {
+        return switch (album) {
+            case 0 -> "AT";
+            case 1 -> "NT";
+            case 2 -> "TM";
+            default -> "RS";
+        };
+    }
+
+    public static int getMusicsAmountInAlbum(int album) {
+        int result = 0;
+        for (Music music : values()) {
+            if (music.getAlbum() == album) {
+                result++;
+            }
+        }
+        return result;
     }
 
     public static String getMusicsFolder() {
