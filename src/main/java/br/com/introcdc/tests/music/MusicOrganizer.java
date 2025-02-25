@@ -21,11 +21,24 @@ public class MusicOrganizer {
     public static boolean MISTER_IA = false;
 
     public static void main(String[] args) {
-        updateDownloadsFolder();
+        updateFolderInfo(new File("F:/Musicas/Mister IA/"));
+        updateFolderInfo(new File("F:/Musicas/Mister IA Cover/"));
+        updateFolderInfo(new File("F:/Musicas/Mister IA Cover Others/"));
+        updateFolderInfo(new File("F:/Musicas/Mister IA Others/"));
+        updateFolderInfo(new File("F:/Musicas/Mister IA Remastered/"));
+        updateFolderInfo(new File("F:/Musicas/Mister IA Stems/"));
     }
 
     public static void updateDownloadsFolder() {
         fullApply(new File("C:/Users/Bruno/Downloads"), new File("F:/Imagens/Random/ia/Mister IA/Descartados"));
+    }
+
+    public static void updateFolderInfo(File folder) {
+        for (File file : folder.listFiles()) {
+            if (file.isFile() && file.getName().endsWith(".mp3")) {
+                updateFile(file);
+            }
+        }
     }
 
     public static void updateOthersFolder() {
