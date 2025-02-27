@@ -148,6 +148,7 @@ public enum Music {
     GABRIEL_PARA_JABRIEL("Gabriel para Jabriel", false, "31/12/2024 - 20:10", 2, 34, 1),
     GABRIEL("Gabriel", false, "29/12/2024 - 14:05", 2, 19, 1),
     GALERA_DO_MARIAUM("Galera do Mariaum", false, "15/12/2025 - 12:55", 2, 76, 0),
+    GAROTAS_PALHACO("Garotas Palhaço", false, "26/02/2025 - 23:18", 2, 82, 5),
     GIGANTES_DO_FORROZAO("Gigantes do Forrozão", false, "07/05/2024 - 16:52", 0, 14, 1),
     GRANDE_ENIGMA("Grande Enigma", false, "02/08/2024 - 17:49", 1, 1, 1),
     HIPER_CINEMATIC("Hiper Cinematic", false, "04/07/2024 - 12:46", 0, 48, 1),

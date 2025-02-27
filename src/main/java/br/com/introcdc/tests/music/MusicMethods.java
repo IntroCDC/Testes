@@ -44,7 +44,8 @@ public class MusicMethods {
                         Music.THE_IMPOSSIBLE_VERSAO_METAL,
                         Music.OLD_BURNING_LOVE,
                         Music.PARABENS_ANA,
-                        Music.NAO_SABE_PULAR)
+                        Music.NAO_SABE_PULAR,
+                        Music.GAROTAS_PALHACO)
         );
         Map<Integer, Integer> amount = new HashMap<>();
         System.out.println("\uD83D\uDD13 As Desbloqueadas: (" + unlocked.size() + "/" + Music.values().length + ")");

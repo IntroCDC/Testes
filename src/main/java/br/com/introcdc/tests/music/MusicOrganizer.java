@@ -21,12 +21,7 @@ public class MusicOrganizer {
     public static boolean MISTER_IA = false;
 
     public static void main(String[] args) {
-        updateFolderInfo(new File("F:/Musicas/Mister IA/"));
-        updateFolderInfo(new File("F:/Musicas/Mister IA Cover/"));
-        updateFolderInfo(new File("F:/Musicas/Mister IA Cover Others/"));
-        updateFolderInfo(new File("F:/Musicas/Mister IA Others/"));
-        updateFolderInfo(new File("F:/Musicas/Mister IA Remastered/"));
-        updateFolderInfo(new File("F:/Musicas/Mister IA Stems/"));
+        updateDownloadsFolder();
     }
 
     public static void updateDownloadsFolder() {
