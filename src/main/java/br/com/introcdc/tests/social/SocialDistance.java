@@ -348,6 +348,8 @@ public enum SocialDistance {
     MAERAINHA_CASALUCAS("Mãe Rainha", "Casa Lucas", 500),
     IBIS_CASATIAEDUARDA("Ibis", "Casa Tia Eduarda", 27900),
     SMARTFIT_BRAZAO("Smart Fit", "Brazão", 1000),
+    SHOPPINGBENFICA_PRAIADEIRACEMA("Shopping Benfica", "Praia de Iracema", 6300),
+    PRAIADEIRACEMA_TERMINALANTONIOBEZERRA("Praia de Iracema", "Terminal Antônio Bezerra", 10600),
     ;
 
     private final String locationOne;
