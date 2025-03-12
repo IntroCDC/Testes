@@ -89,6 +89,7 @@ public enum Music {
     ANIVERSARIO_DA_SAFIRA("Aniversário da Safira", false, "17/08/2024 - 12:58", 1, 7, 8),
     AMOR_DESVELADO("Amor Desvelado", false, "31/05/2024 - 05:25", 0, 21, 0),
     ANO_NOVO_EM_IRACEMA("Ano Novo em Iracema", false, "30/12/2024 - 16:25", 2, 26, 3),
+    ARROCHA_DA_ANA("Arrocha da Ana", false, "08/03/2025 - 20:02", 2, 85, 3),
     ARROCHA_DO_GABRIEL("Arrocha do Gabriel", false, "31/12/2024 - 19:40", 2, 33, 1),
     ATENCAO_GABRIEL("Atenção Gabriel", false, "29/12/2024 - 11:41", 2, 15, 1),
     AUDIO_WHATSAPP("Áudio WhatsApp", false, "31/08/2024 - 06:06", 1, 16, 1),
@@ -198,6 +199,8 @@ public enum Music {
     OURO_BRANCO_PARA_LUCAS("Ouro Branco para Lucas", false, "17/11/2024 - 07:42", 1, 70, 3),
     PALAVRAS_GUARDADAS("Palavras Guardadas", false, "30/06/2024 - 19:46", 0, 44, 1),
     PARABENS_ANA("Parabéns Ana", false, "20/02/2025 - 01:10", 2, 77, 4),
+    PARABENS_DE_KOS("Parabéns de Kos", false, "06/03/2025 - 00:23", 2, 84, 1),
+    PARABENS_KOS("Parabéns Kos", false, "12/03/2025 - 16:42", 2, 86, 3),
     PARABENS_MARIAUM("Parabéns Mariaum", false, "11/10/2024 - 20:39", 1, 46, 3, "Parabéns Mariaum (Versão Mariaum)"),
     PEDIDO_DE_MASCARA("Pedido de Máscara", false, "11/07/2024 - 14:16", 0, 61, 3),
     PERFEITA("Perfeita", false, "02/12/2024 - 23:48", 2, 7, 1),
@@ -256,6 +259,7 @@ public enum Music {
     VIDA_EM_RITMO_PESADO("Vida em Ritmo Pesado", false, "07/05/2024 - 09:31", 0, 13, 0),
     VITAMINA_DA_EDUARDA("Vitamina da Eduarda", false, "12/11/2024 - 15:30", 1, 63, 1),
     XAROPE_E_VITAMINA_C("Xarope e Vitamina C", false, "10/07/2024 - 21:49", 0, 58, 3),
+    YUSUKE("Yusuke", false, "05/03/2025 - 03:20", 2, 83, 1),
     ;
 
     private final String musicName;

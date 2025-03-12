@@ -535,6 +535,11 @@ public enum SocialRegister {
     E102(102, "Cancelamento do Curso e Greenish",
             new SocialDay[]{
                     new SocialDay("27/02/2025", "-Casa", "Grau Técnico", "Shopping Benfica", "Praia de Iracema", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E103(103, "Meu Aniversário de 2025",
+            new SocialDay[]{
+                    new SocialDay("06/03/2025", "-Casa", "Casa Eduarda", "Ibis", "Apartamento", "-Casa", "-Apartamento", "-Iguatemi", "-Apartamento", "Coco Bambu", "Apartamento"),
+                    new SocialDay("07/03/2025", "-Apartamento", "-Casa", "-Apartamento", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

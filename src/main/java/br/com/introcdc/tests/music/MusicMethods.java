@@ -19,33 +19,43 @@ public class MusicMethods {
 
     public static void discordUnlocker() {
         List<Music> unlocked = new ArrayList<>(
-                List.of(Music.REINOS_DE_JOGO,
+                List.of(
+                        Music.JOGOS_DO_MUSH,
+                        Music.REINOS_DE_JOGO,
                         Music.VOCE_FEZ_COCO,
                         Music.RAFAEL_AULER_3_5,
                         Music.RITUAL_DAS_GATINHAS,
                         Music.JINGLE_DAS_GATINHAS,
+                        Music.REGISTRO_DE_FUTEBOL,
                         Music.BODE,
                         Music.KINDOME,
                         Music.COCO_NA_ARARIUS,
+                        Music.AGUINHA_GELADINHA,
                         Music.HACKINGS,
+                        Music.AGUINHA_GELADINHA_VERSAO_PISEIRO,
                         Music.ENGRACADAO,
                         Music.ENGRACADAO_VERSAO_PISEIRO,
                         Music.SANIDADE_MENTAL,
                         Music.STILL_WATER,
+                        Music.AGUINHA_QUENTINHA,
                         Music.AMOR_DE_JOGO,
                         Music.GOSTO_DE_COCO,
                         Music.CHEGOU_O_REMEDIO,
                         Music.ONI_CHAN,
+                        Music.MARIAUM_E_JAPONESA,
                         Music.CLAUDINHO,
                         Music.DESTROY_EVERYTHING,
                         Music.ARROCHA_DO_JOVEM_DINAMICO,
+                        Music.SARAIVA,
                         Music.KIRITO_O_BODE,
                         Music.THE_IMPOSSIBLE,
                         Music.THE_IMPOSSIBLE_VERSAO_METAL,
                         Music.OLD_BURNING_LOVE,
                         Music.PARABENS_ANA,
                         Music.NAO_SABE_PULAR,
-                        Music.GAROTAS_PALHACO)
+                        Music.GAROTAS_PALHACO,
+                        Music.PARABENS_DE_KOS,
+                        Music.PARABENS_KOS)
         );
         Map<Integer, Integer> amount = new HashMap<>();
         System.out.println("\uD83D\uDD13 As Desbloqueadas: (" + unlocked.size() + "/" + Music.values().length + ")");
