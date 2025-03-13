@@ -158,7 +158,7 @@ public class ForumUpdater {
                     if (!youtubeLink.isEmpty()) {
                         message += "\nYoutube: " + youtubeLink;
                     }
-                    sendForumWebhook(message);
+                    sendForumWebhookSplit(message);
 
                     lastTopicId = currentTopicId;
                     saveState();
@@ -258,7 +258,7 @@ public class ForumUpdater {
                                 if (!youtubeLink.isEmpty()) {
                                     message += "\nYoutube: " + youtubeLink;
                                 }
-                                sendForumWebhook(message);
+                                sendForumWebhookSplit(message);
 
                                 lastEditTime = currentEditTime;
                                 saveState();
@@ -290,7 +290,7 @@ public class ForumUpdater {
 
                 if (currentMemberId > lastMemberId) {
                     String message = "\uD83D\uDC64 Novo membro adicionado no Fórum IntroCDC: " + name + " - " + url;
-                    sendForumWebhook(message);
+                    sendForumWebhookSplit(message);
 
                     lastMemberId = currentMemberId;
                     saveState();
@@ -309,8 +309,41 @@ public class ForumUpdater {
         builder.setUsername("Forum IntroCDC");
         builder.setAvatarUrl("http://forum.introcdc.com/uploads/monthly_2022_03/Webp.net-resizeimage.png.d3a49320fdcce4de59f2d9b9cfb6d91e.png");
         builder.setContent(content);
-
         getForumWebhook().send(builder.build());
+    }
+
+    private static void sendForumWebhookSplit(String content) {
+        final int maxLength = 2000;
+
+        if (content.length() <= maxLength) {
+            sendForumWebhook(content);
+            return;
+        }
+
+        int start = 0;
+
+        while (start < content.length()) {
+            int end = Math.min(start + maxLength, content.length());
+            int lastNewline = content.lastIndexOf('\n', end);
+
+            if (lastNewline <= start) {
+                lastNewline = end;
+            }
+
+            String part = content.substring(start, lastNewline);
+            sendForumWebhook(part);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            start = lastNewline;
+            if (start < content.length() && content.charAt(start) == '\n') {
+                start++;
+            }
+        }
     }
 
     /**
