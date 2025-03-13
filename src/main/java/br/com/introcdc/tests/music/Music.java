@@ -208,6 +208,7 @@ public enum Music {
     PLUGIN_DE_REPORT("Plugin de Report", false, "23/10/2024 - 21:08", 1, 54, 0),
     POMBO("Pombo", false, "09/09/2024 - 18:26", 1, 27, 1),
     PORTUGUES("Português", false, "24/02/2025 - 15:13", 2, 81, 1),
+    PRIMEIRO_DE_ABRIL("Primeiro de Abril", false, "13/03/2025 - 03:53", 2, 87, 3, "Primeiro de Abril (Versão Mariaum)"),
     PROCURA_DE_EMPREGO("Procura de Emprego", false, "01/07/2024 - 08:31", 0, 45, 1),
     PROMESSA_DA_SULAMERICANA("Promessa da Sulamericana", false, "26/09/2024 - 19:13", 1, 39, 1),
     PUDIM_E_TORTA_DE_FRANGO("Pudim e Torta de Frango", false, "31/07/2024 - 17:35", 0, 86, 1),
