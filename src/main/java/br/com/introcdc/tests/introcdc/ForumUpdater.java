@@ -158,10 +158,10 @@ public class ForumUpdater {
                     if (!youtubeLink.isEmpty()) {
                         message += "\nYoutube: " + youtubeLink;
                     }
-                    sendForumWebhookSplit(message);
-
                     lastTopicId = currentTopicId;
                     saveState();
+
+                    sendForumWebhookSplit(message);
                 }
             }
         } catch (SQLException exception) {
@@ -258,10 +258,11 @@ public class ForumUpdater {
                                 if (!youtubeLink.isEmpty()) {
                                     message += "\nYoutube: " + youtubeLink;
                                 }
-                                sendForumWebhookSplit(message);
-
                                 lastEditTime = currentEditTime;
                                 saveState();
+
+                                sendForumWebhookSplit(message);
+
                             }
                         }
                     }
