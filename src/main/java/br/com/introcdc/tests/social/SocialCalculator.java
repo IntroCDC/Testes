@@ -31,9 +31,9 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "07/03/2025 - 02:22 - Casa Eduarda";
-    public static String LS = "02/03/2024 - 22:00 - Apartamento";
-    public static String LS_B = "21/02/2025 - 02:30 - Apartamento";
+    public static String LK = "31/03/2025 - 16:10 (Casa Eduarda)";
+    public static String LS_B = "30/03/2025 - 19:30 (Pousada Boro)"; // 29/09/2023 - 16:00 (Apartamento) / 08/10/2023 - 14:00 (Apartamento) / 02/03/2024 - 22:00 (Apartamento) / 21/02/2025 - 02:30 (Apartamento) / 30/03/2025 - 14:00 (Barragem do Catolé) / 30/03/2025 - 19:30 (Pousada Boro)
+    public static String LS = "30/03/2025 - 19:30 (Pousada Boro)"; // 08/10/2023 - 14:00 (Apartamento - Umbrella) / 02/03/2024 - 22:00 (Apartamento - Call My Name) / 30/03/2025 - 19:30 (Pousada Boro - P Diddy)
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();

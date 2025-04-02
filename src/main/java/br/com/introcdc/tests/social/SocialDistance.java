@@ -350,6 +350,12 @@ public enum SocialDistance {
     SMARTFIT_BRAZAO("Smart Fit", "Brazão", 1000),
     SHOPPINGBENFICA_PRAIADEIRACEMA("Shopping Benfica", "Praia de Iracema", 6300),
     PRAIADEIRACEMA_TERMINALANTONIOBEZERRA("Praia de Iracema", "Terminal Antônio Bezerra", 10600),
+    CASA_BARDATRIPA("Casa", "Bar da Tripa", 64000),
+    BARDATRIPA_CASALUCAS("Bar da Tripa", "Casa Lucas", 500),
+    CASALUCAS_BARRAGEMDOCATOLÉ("Casa Lucas", "Barragem do Catolé", 5600),
+    CASALUCAS_FARMÁCIAULTRAPOPULAR("Casa Lucas", "Farmácia Ultra Popular", 1000),
+    CASALUCAS_POUSADABORO("Casa Lucas", "Pousada Boro", 500),
+    POUSADABORO_CASAEDUARDA("Pousada Boro", "Casa Eduarda", 1300),
     ;
 
     private final String locationOne;
