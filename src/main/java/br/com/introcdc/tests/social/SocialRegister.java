@@ -546,6 +546,10 @@ public enum SocialRegister {
                     new SocialDay("29/03/2025", "-Casa", "Bar da Tripa"),
                     new SocialDay("30/03/2025", "-Bar da Tripa", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "Barragem do Catolé", "Casa Lucas", "Farmácia Ultra Popular", "Casa Lucas", "Pousada Boro", "Casa Eduarda", "Pousada Boro"),
                     new SocialDay("31/03/2025", "-Pousada Boro", "Casa Lucas", "Casa Eduarda", "-Casa")
+            }),
+    E105(105, "Almoço antes de Filme do Minecraft no North Shopping",
+            new SocialDay[]{
+                    new SocialDay("02/04/2025", "-Casa", "North Shopping", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
