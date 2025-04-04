@@ -356,6 +356,8 @@ public enum SocialDistance {
     CASALUCAS_FARMÁCIAULTRAPOPULAR("Casa Lucas", "Farmácia Ultra Popular", 1000),
     CASALUCAS_POUSADABORO("Casa Lucas", "Pousada Boro", 500),
     POUSADABORO_CASAEDUARDA("Pousada Boro", "Casa Eduarda", 1300),
+    CASA_CASATIAEDUARDA("Casa", "Casa Tia Eduarda", 13900),
+    CASATIAEDUARDA_ESCOLACAUCAIA("Casa Tia Eduarda", "Escola Caucaia", 7400),
     ;
 
     private final String locationOne;

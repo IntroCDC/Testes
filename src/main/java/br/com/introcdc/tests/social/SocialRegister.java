@@ -550,6 +550,10 @@ public enum SocialRegister {
     E105(105, "Almoço antes de Filme do Minecraft no North Shopping",
             new SocialDay[]{
                     new SocialDay("02/04/2025", "-Casa", "North Shopping", "-Casa")
+            }),
+    E106(106, "Ida para Entrevista de Emprego",
+            new SocialDay[]{
+                    new SocialDay("03/04/2025", "-Casa", "Casa Tia Eduarda", "Escola Caucaia", "Casa Tia Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
