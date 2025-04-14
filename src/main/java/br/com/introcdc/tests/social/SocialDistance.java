@@ -358,6 +358,11 @@ public enum SocialDistance {
     POUSADABORO_CASAEDUARDA("Pousada Boro", "Casa Eduarda", 1300),
     CASA_CASATIAEDUARDA("Casa", "Casa Tia Eduarda", 13900),
     CASATIAEDUARDA_ESCOLACAUCAIA("Casa Tia Eduarda", "Escola Caucaia", 7400),
+    NORTHSHOPPING_IGUATEMI("North Shopping", "Iguatemi", 12200),
+    CASAEDUARDA_RIOMARKENNEDY("Casa Eduarda", "RioMar Kennedy", 60200),
+    RIOMARKENNEDY_MONTECARLO("RioMar Kennedy", "MonteCarlo", 11100),
+    MONTECARLO_CENTRO("MonteCarlo", "Centro", 6000),
+    CENTRO_PAGUEMENOS("Centro", "Pague Menos", 3500),
     ;
 
     private final String locationOne;

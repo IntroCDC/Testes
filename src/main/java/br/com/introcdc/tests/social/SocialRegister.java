@@ -554,6 +554,14 @@ public enum SocialRegister {
     E106(106, "Ida para Entrevista de Emprego",
             new SocialDay[]{
                     new SocialDay("03/04/2025", "-Casa", "Casa Tia Eduarda", "Escola Caucaia", "Casa Tia Eduarda", "-Casa")
+            }),
+    E107(107, "Ida Rápida no North Shopping",
+            new SocialDay[]{
+                    new SocialDay("06/04/2025", "-Casa", "North Shopping", "-Iguatemi", "-Casa")
+            }),
+    E108(108, "Ida para Piercing",
+            new SocialDay[]{
+                    new SocialDay("11/04/2025", "-Casa", "Casa Eduarda", "RioMar Kennedy", "MonteCarlo", "Centro", "Pague Menos", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
