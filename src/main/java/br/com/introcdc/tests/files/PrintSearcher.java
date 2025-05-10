@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.files;
 /*
- * Written by IntroCDC, Bruno Coêlho at 08/01/2025 - 00:07
+ * Written by IntroCDC, Bruno Coelho at 08/01/2025 - 00:07
  */
 
 import java.io.IOException;

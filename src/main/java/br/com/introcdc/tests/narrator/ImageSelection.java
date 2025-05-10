@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.narrator;
 /*
- * Written by IntroCDC, Bruno Coêlho at 29/11/2024 - 21:22
+ * Written by IntroCDC, Bruno Coelho at 29/11/2024 - 21:22
  */
 
 import java.awt.datatransfer.DataFlavor;

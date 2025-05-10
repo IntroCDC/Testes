@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.ping;
 /*
- * Written by IntroCDC, Bruno Coêlho at 11/12/2024 - 22:46
+ * Written by IntroCDC, Bruno Coelho at 11/12/2024 - 22:46
  */
 
 import br.com.introcdc.tests.audio.Audio;

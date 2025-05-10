@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.conversor;
 /*
- * Written by IntroCDC, Bruno Coêlho at 13/11/2022 - 07:13
+ * Written by IntroCDC, Bruno Coelho at 13/11/2022 - 07:13
  */
 
 public class TeamInfo {

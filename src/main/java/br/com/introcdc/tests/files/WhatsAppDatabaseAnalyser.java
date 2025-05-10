@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.files;
 /*
- * Written by IntroCDC, Bruno Coêlho at 01/09/2020 - 04:13
+ * Written by IntroCDC, Bruno Coelho at 01/09/2020 - 04:13
  */
 
 import java.io.File;

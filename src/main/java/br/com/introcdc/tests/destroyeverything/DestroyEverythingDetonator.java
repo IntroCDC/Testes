@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.destroyeverything;
 /*
- * Written by IntroCDC, Bruno Coêlho at 13/01/2025 - 23:40
+ * Written by IntroCDC, Bruno Coelho at 13/01/2025 - 23:40
  */
 
 import br.com.introcdc.tests.advmusic.MP3Musica;

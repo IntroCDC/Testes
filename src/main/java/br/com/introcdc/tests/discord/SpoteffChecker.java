@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.discord;
 /*
- * Written by IntroCDC, Bruno Coêlho at 26/12/2022 - 13:53
+ * Written by IntroCDC, Bruno Coelho at 26/12/2022 - 13:53
  */
 
 import java.awt.*;

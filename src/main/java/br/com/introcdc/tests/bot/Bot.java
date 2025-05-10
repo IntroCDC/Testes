@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.bot;
 /*
- * Written by IntroCDC, Bruno Coêlho at 29/11/2024 - 02:07
+ * Written by IntroCDC, Bruno Coelho at 29/11/2024 - 02:07
  */
 
 import java.util.Scanner;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.files;
 /*
- * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 04:38
+ * Written by IntroCDC, Bruno Coelho at 09/03/2024 - 04:38
  */
 
 import javax.imageio.ImageIO;

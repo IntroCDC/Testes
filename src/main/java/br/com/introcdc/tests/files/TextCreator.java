@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.files;
 /*
- * Written by IntroCDC, Bruno Coêlho at 11/02/2025 - 03:45
+ * Written by IntroCDC, Bruno Coelho at 11/02/2025 - 03:45
  */
 
 import java.awt.*;

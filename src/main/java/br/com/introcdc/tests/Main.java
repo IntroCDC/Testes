@@ -1,6 +1,6 @@
 package br.com.introcdc.tests;
 /*
- * Written by IntroCDC, Bruno Coêlho at 17/12/2022 - 01:31
+ * Written by IntroCDC, Bruno Coelho at 17/12/2022 - 01:31
  */
 
 import br.com.introcdc.tests.advmusic.AMMain;

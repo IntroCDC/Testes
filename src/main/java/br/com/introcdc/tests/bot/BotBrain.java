@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.bot;
 /*
- * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 04:35
+ * Written by IntroCDC, Bruno Coelho at 09/03/2024 - 04:35
  */
 
 import java.io.BufferedReader;

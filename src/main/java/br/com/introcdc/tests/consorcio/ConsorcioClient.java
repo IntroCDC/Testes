@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.consorcio;
 /*
- * Written by IntroCDC, Bruno Coêlho at 19/10/2021 - 20:52
+ * Written by IntroCDC, Bruno Coelho at 19/10/2021 - 20:52
  */
 
 import java.util.ArrayList;

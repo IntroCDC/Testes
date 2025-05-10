@@ -1,7 +1,7 @@
 package br.com.introcdc.tests.database.query;
 
 /**
- * Written by IntroCDC, Bruno Coêlho at 01/09/2017 - 06:02
+ * Written by IntroCDC, Bruno Coelho at 01/09/2017 - 06:02
  */
 
 public enum OrderType {

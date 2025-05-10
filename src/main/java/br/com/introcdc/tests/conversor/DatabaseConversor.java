@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.conversor;
 /*
- * Written by IntroCDC, Bruno Coêlho at 27/01/2025 - 03:42
+ * Written by IntroCDC, Bruno Coelho at 27/01/2025 - 03:42
  */
 
 import br.com.introcdc.tests.database.DatabaseUtils;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.love;
 /*
- * Written by IntroCDC, Bruno Coêlho at 19/05/2024 - 20:17
+ * Written by IntroCDC, Bruno Coelho at 19/05/2024 - 20:17
  */
 
 import java.util.*;

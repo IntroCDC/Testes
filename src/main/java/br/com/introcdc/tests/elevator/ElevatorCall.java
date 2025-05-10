@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.elevator;
 /*
- * Written by IntroCDC, Bruno Coêlho at 28/11/2024 - 02:24
+ * Written by IntroCDC, Bruno Coelho at 28/11/2024 - 02:24
  */
 
 public class ElevatorCall {

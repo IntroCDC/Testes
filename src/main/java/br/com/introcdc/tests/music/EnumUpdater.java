@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.music;
 /*
- * Written by IntroCDC, Bruno Coêlho at 18/02/2025 - 08:46
+ * Written by IntroCDC, Bruno Coelho at 18/02/2025 - 08:46
  */
 
 import java.text.ParseException;

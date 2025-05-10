@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.random;
 /*
- * Written by IntroCDC, Bruno Coêlho at 01/04/2021 - 17:58
+ * Written by IntroCDC, Bruno Coelho at 01/04/2021 - 17:58
  */
 
 import java.util.HashMap;

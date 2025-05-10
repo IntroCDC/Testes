@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.minigames;
 /*
- * Written by IntroCDC, Bruno Coêlho at 27/06/2024 - 09:51
+ * Written by IntroCDC, Bruno Coelho at 27/06/2024 - 09:51
  */
 
 import java.util.ArrayList;

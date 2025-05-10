@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.database.query;
 /*
- * Written by IntroCDC, Bruno Coêlho at 02/06/2020 - 08:18
+ * Written by IntroCDC, Bruno Coelho at 02/06/2020 - 08:18
  */
 
 public record ColumnCreator(String name,

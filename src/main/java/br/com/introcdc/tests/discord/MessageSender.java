@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.discord;
 /*
- * Written by IntroCDC, Bruno Coêlho at 29/11/2024 - 02:05
+ * Written by IntroCDC, Bruno Coelho at 29/11/2024 - 02:05
  */
 
 import br.com.introcdc.tests.audio.Audio;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.audio;
 /*
- * Written by IntroCDC, Bruno Coêlho at 01/10/2024 - 16:52
+ * Written by IntroCDC, Bruno Coelho at 01/10/2024 - 16:52
  */
 
 import javax.sound.sampled.AudioFormat;

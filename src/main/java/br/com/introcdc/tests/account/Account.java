@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.account;
 /*
- * Written by IntroCDC, Bruno Coêlho at 19/10/2021 - 20:28
+ * Written by IntroCDC, Bruno Coelho at 19/10/2021 - 20:28
  */
 
 public class Account {

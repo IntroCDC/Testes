@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.music;
 /*
- * Written by IntroCDC, Bruno Coêlho at 15/02/2025 - 00:03
+ * Written by IntroCDC, Bruno Coelho at 15/02/2025 - 00:03
  */
 
 import java.awt.*;

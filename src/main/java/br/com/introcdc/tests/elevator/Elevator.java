@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.elevator;
 /*
- * Written by IntroCDC, Bruno Coêlho at 21/11/2024 - 01:41
+ * Written by IntroCDC, Bruno Coelho at 21/11/2024 - 01:41
  */
 
 import java.util.ArrayList;

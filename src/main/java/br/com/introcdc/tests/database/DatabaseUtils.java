@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.database;
 /*
-  Written by IntroCDC, Bruno Coêlho at 29/08/2017 - 06:27
+  Written by IntroCDC, Bruno Coelho at 29/08/2017 - 06:27
  */
 
 import br.com.introcdc.tests.database.query.DatabaseQuery;

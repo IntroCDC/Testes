@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.guitarhero;
 /*
- * Written by IntroCDC, Bruno Coêlho at 14/05/2021 - 15:55
+ * Written by IntroCDC, Bruno Coelho at 14/05/2021 - 15:55
  */
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.narrator;
 /*
- * Written by IntroCDC, Bruno Coêlho at 22/08/2024 - 18:29
+ * Written by IntroCDC, Bruno Coelho at 22/08/2024 - 18:29
  */
 
 import javax.imageio.ImageIO;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.value;
 /*
- * Written by IntroCDC, Bruno Coêlho at 02/09/2024 - 21:55
+ * Written by IntroCDC, Bruno Coelho at 02/09/2024 - 21:55
  */
 
 import br.com.introcdc.tests.Main;

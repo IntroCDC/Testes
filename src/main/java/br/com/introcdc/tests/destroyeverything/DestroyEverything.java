@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.destroyeverything;
 /*
- * Written by IntroCDC, Bruno Coêlho at 13/01/2025 - 23:34
+ * Written by IntroCDC, Bruno Coelho at 13/01/2025 - 23:34
  */
 
 import com.google.gson.JsonElement;

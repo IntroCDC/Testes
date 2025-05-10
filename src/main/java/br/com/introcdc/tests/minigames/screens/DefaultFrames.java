@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.minigames.screens;
 /*
- * Written by IntroCDC, Bruno Coêlho at 27/06/2024 - 10:14
+ * Written by IntroCDC, Bruno Coelho at 27/06/2024 - 10:14
  */
 
 import br.com.introcdc.tests.minigames.MiniGameFrame;

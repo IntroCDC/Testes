@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.random;
 /*
- * Written by IntroCDC, Bruno Coêlho at 17/04/2020 - 04:21
+ * Written by IntroCDC, Bruno Coelho at 17/04/2020 - 04:21
  */
 
 import java.util.Scanner;

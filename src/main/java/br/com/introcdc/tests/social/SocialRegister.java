@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.social;
 /*
- * Written by IntroCDC, Bruno Coêlho at 08/07/2024 - 19:14
+ * Written by IntroCDC, Bruno Coelho at 08/07/2024 - 19:14
  */
 
 public enum SocialRegister {
@@ -562,6 +562,17 @@ public enum SocialRegister {
     E108(108, "Ida para Piercing",
             new SocialDay[]{
                     new SocialDay("11/04/2025", "-Casa", "Casa Eduarda", "RioMar Kennedy", "MonteCarlo", "Centro", "Pague Menos", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E109(109, "Um Fim de Semana com Umbanda",
+            new SocialDay[]{
+                    new SocialDay("26/04/2025", "-Casa", "Apartamento", "São Luiz", "Apartamento", "Umbanda", "Apartamento", "Boêmias"),
+                    new SocialDay("27/04/2025", "-Boêmias", "Vibe 085", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E110(110, "Show da Lady Gaga no Vibe 085",
+            new SocialDay[]{
+                    new SocialDay("02/05/2025", "-Casa", "Apartamento", "Laje"),
+                    new SocialDay("03/05/2025", "-Laje", "Apartamento", "Vibe 085"),
+                    new SocialDay("04/05/2025", "-Vibe 085", "Apartamento", "Praia de Iracema", "Apartamento", "Terminal Antônio Bezerra", "Casa")
             });
 
     public static SocialRegister byNumber(int number) {

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.kindome;
 /*
- * Written by IntroCDC, Bruno Coêlho at 29/11/2024 - 02:32
+ * Written by IntroCDC, Bruno Coelho at 29/11/2024 - 02:32
  */
 
 import br.com.introcdc.tests.database.DatabaseUtils;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.database.query;
 /**
- * Written by IntroCDC, Bruno Coêlho at 29/08/2017 - 11:58
+ * Written by IntroCDC, Bruno Coelho at 29/08/2017 - 11:58
  */
 
 public enum MathType {

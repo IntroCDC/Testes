@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.database;
 /*
- * Written by IntroCDC, Bruno Coêlho at 24/12/2022 - 00:33
+ * Written by IntroCDC, Bruno Coelho at 24/12/2022 - 00:33
  */
 
 import java.io.*;

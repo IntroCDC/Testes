@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.social;
 /*
- * Written by IntroCDC, Bruno Coêlho at 14/01/2025 - 02:05
+ * Written by IntroCDC, Bruno Coelho at 14/01/2025 - 02:05
  */
 
 import java.util.ArrayList;
@@ -363,6 +363,10 @@ public enum SocialDistance {
     RIOMARKENNEDY_MONTECARLO("RioMar Kennedy", "MonteCarlo", 11100),
     MONTECARLO_CENTRO("MonteCarlo", "Centro", 6000),
     CENTRO_PAGUEMENOS("Centro", "Pague Menos", 3500),
+    APARTAMENTO_UMBANDA("Apartamento", "Umbanda", 6000),
+    APARTAMENTO_BOÊMIAS("Apartamento", "Boêmias", 100),
+    BOÊMIAS_VIBE085("Boêmias", "Vibe 085", 200),
+    VIBE085_APARTAMENTO("Vibe 085", "Apartamento", 100),
     ;
 
     private final String locationOne;

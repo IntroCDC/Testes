@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.introcdc;
 /*
- * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 04:37
+ * Written by IntroCDC, Bruno Coelho at 09/03/2024 - 04:37
  */
 
 import br.com.introcdc.tests.database.StringComponents;

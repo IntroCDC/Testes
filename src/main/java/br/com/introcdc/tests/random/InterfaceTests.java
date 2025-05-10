@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.random;
 /*
- * Written by IntroCDC, Bruno Coêlho at 10/04/2021 - 04:56
+ * Written by IntroCDC, Bruno Coelho at 10/04/2021 - 04:56
  */
 
 public class InterfaceTests {

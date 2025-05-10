@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.google;
 /*
- * Written by IntroCDC, Bruno Coêlho at 23/12/2022 - 23:18
+ * Written by IntroCDC, Bruno Coelho at 23/12/2022 - 23:18
  */
 
 import br.com.introcdc.tests.database.StringComponents;

@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.music;
 /*
- * Written by IntroCDC, Bruno Coêlho at 14/02/2025 - 06:55
+ * Written by IntroCDC, Bruno Coelho at 14/02/2025 - 06:55
  */
 
 import java.io.BufferedReader;
@@ -36,7 +36,7 @@ public enum Music {
     DOIDAO("Doidão", true, "22/10/2024 - 23:09", 1, 52, 10),
     ENGRACADINHO("Engraçadinho", true, "25/06/2024 - 02:55", 0, 42, 1, "Engraçadinho (Versão Alternativa)", "Engraçadinho (Versão Funk)", "Engraçadinho (Versão Metal)", "Engraçadinho (Versão Piseiro)", "Engraçadinho (Versão Pop)", "Engraçadinho (Versão Metal 1)", "Engraçadinho (Versão Metal 2)", "Engraçadinho (Versão Metal 3)", "Engraçadinho (Versão Piseiro 1)", "Engraçadinho (Versão Alternativa) (Remastered)"),
     ENGRACADAO("ENGRAÇADÃO", true, "25/09/2024 - 14:44", 1, 37, 19, "ENGRAÇADÃO (Versão Pop)", "ENGRAÇADÃO (Versão Reggae)", "ENGRAÇADÃO (Versão Épica)", "ENGRAÇADÃO (Versão Épica 1)", "ENGRAÇADÃO (Remastered 1)"),
-    ENGRACADAO_VERSAO_PISEIRO("ENGRAÇADÃO (Versão Piseiro)", true, "25/09/2024 - 15:00", 1, 38, 0, "ENGRAÇADÃO (Versão Piseiro) (Remastered 1)"),
+    ENGRACADAO_VERSAO_PISEIRO("ENGRAÇADÃO (Versão Piseiro)", true, "25/09/2024 - 15:00", 1, 38, 0, "ENGRAÇADÃO (Versão Piseiro) (Remastered 1)", "ENGRAÇADÃO (Versão Piseiro) (Remastered 2)"),
     GOSTO_DE_COCO("Gosto de Cocô", true, "16/11/2024 - 14:05", 1, 69, 9),
     HACKINGS("Hackings", true, "29/08/2024 - 01:33", 1, 10, 2, "Hackings (Versão Piseiro)", "Hackings (Versão Piseiro 1)"),
     HA_UM_POTO("Há Um Potó", true, "27/04/2024 - 01:26", 0, 7, 3),
@@ -58,7 +58,7 @@ public enum Music {
     ONI_CHAN("Oni Chan", true, "03/01/2025 - 14:34", 2, 45, 1),
     PATINETE_ELETRICO("Patinete Elétrico", true, "19/06/2024 - 02:08", 0, 36, 5, "Patinete Elétrico (Versão Arrocha)", "Patinete Elétrico (Versão Funk)", "Patinete Elétrico (Versão Romantica)", "Patinete Elétrico (Versão Alternativa)"),
     PATINETE_ELETRICO_VERSAO_PISEIRO("Patinete Elétrico (Versão Piseiro)", true, "27/09/2024 - 04:25", 1, 40, 0, "Patinete Elétrico (Versão Piseiro 1)", "Patinete Elétrico (Versão Piseiro 2)"),
-    RAFAEL_AULER_3_5("Rafael Auler 3.5", true, "07/06/2024 - 22:39", 0, 27, 0, "Rafael Auler 3.5 (Versão Reggae)", "Rafael Auler 3.5 (Versão Alternativa)", "Rafael Auler 3.5 (Versão Eletrônica)", "Rafael Auler 3.5 (Versão Pagode)", "Rafael Auler 3.5 (Versão Piano)", "Rafael Auler 3.5 (Versão Piseiro)", "Rafael Auler 3.5 (Versão Seresta)", "Rafael Auler 3.5 (Versão Sofrência)", "Rafael Auler 3.5 (Versão Épica)", "Rafael Auler 3.5 (Versão Pagode 1)", "Rafael Auler 3.5 (Versão Piano 1)", "Rafael Auler 3.5 (Versão Piseiro 1)"),
+    RAFAEL_AULER_3_5("Rafael Auler 3.5", true, "07/06/2024 - 22:39", 0, 27, 0, "Rafael Auler 3.5 (Versão Reggae)", "Rafael Auler 3.5 (Versão Metal)", "Rafael Auler 3.5 (Versão Alternativa)", "Rafael Auler 3.5 (Versão Eletrônica)", "Rafael Auler 3.5 (Versão Pagode)", "Rafael Auler 3.5 (Versão Piano)", "Rafael Auler 3.5 (Versão Piseiro)", "Rafael Auler 3.5 (Versão Pop)", "Rafael Auler 3.5 (Versão Funk)", "Rafael Auler 3.5 (Versão Violão)", "Rafael Auler 3.5 (Versão Vegas)", "Rafael Auler 3.5 (Versão Miami)", "Rafael Auler 3.5 (Versão Evangélica)", "Rafael Auler 3.5 (Versão Seresta)", "Rafael Auler 3.5 (Versão Sofrência)", "Rafael Auler 3.5 (Versão Épica)", "Rafael Auler 3.5 (Versão Pagode 1)", "Rafael Auler 3.5 (Versão Piano 1)", "Rafael Auler 3.5 (Versão Piseiro 1)", "Rafael Auler 3.5 (Versão Metal 1)"),
     RITUAL_DAS_GATINHAS("Ritual das Gatinhas", true, "13/06/2024 - 06:33", 0, 30, 1, "Ritual das Gatinhas (Versão Piseiro)", "Ritual das Gatinhas (Versão Piseiro 1)"),
     SANIDADE_MENTAL("Sanidade Mental", true, "27/09/2024 - 05:42", 1, 41, 15, "Sanidade Mental (Versão Piseiro)", "Sanidade Mental (Versão Seresta)"),
     SOFREDOR("Sofredor", true, "28/08/2024 - 23:02", 1, 9, 8),
@@ -133,6 +133,7 @@ public enum Music {
     EDUARDA("Eduarda", false, "13/06/2024 - 20:02", 0, 31, 1, "Eduarda (Versão Alternativa)", "Eduarda (Versão Forró)", "Eduarda (Versão Infantil)", "Eduarda (Versão Pagode)", "Eduarda (Versão Piano Calmo)", "Eduarda (Versão Piano)", "Eduarda (Versão Reggae)", "Eduarda (Versão Alternativa 2)", "Eduarda (Versão Forró 2)", "Eduarda (Versão Pagode 2)", "Eduarda (Versão Piano 1)", "Eduarda (Versão Piano 2)"),
     ELE_E_O_GABRIEL("Ele é o Gabriel", false, "01/01/2025 - 14:55", 2, 37, 1),
     ENVIANDO_O_KINDOME("Enviando o Kindome", false, "27/11/2024 - 22:20", 2, 4, 1),
+    ENTRADA_SEVERA("Entrada Severa", false, "09/05/2025 - 20:03", 3, 2, 1, "Entrada Severa (Versão Pop)", "Entrada Severa (Versão Pop 1)"),
     ESCOLHA_DA_BLUSA("Escolha da Blusa", false, "16/07/2024 - 16:52", 0, 68, 1),
     ESCOVANDO_OS_DENTES("Escovando os Dentes", false, "02/01/2025 - 13:50", 2, 43, 1),
     EU_TE_AMO_EDUARDA("Eu Te Amo Eduarda", false, "29/12/2024 - 13:09", 2, 17, 1),
@@ -150,6 +151,7 @@ public enum Music {
     GABRIEL_PARA_JABRIEL("Gabriel para Jabriel", false, "31/12/2024 - 20:10", 2, 34, 1),
     GABRIEL("Gabriel", false, "29/12/2024 - 14:05", 2, 19, 1),
     GALERA_DO_MARIAUM("Galera do Mariaum", false, "15/12/2025 - 12:55", 2, 76, 0),
+    GALOPA_PRO_KINDOME("Galopa pro Kindome", false, "09/05/2025 - 21:09", 3, 3, 1),
     GAROTAS_PALHACO("Garotas Palhaço", false, "26/02/2025 - 23:18", 2, 82, 5),
     GIGANTES_DO_FORROZAO("Gigantes do Forrozão", false, "07/05/2024 - 16:52", 0, 14, 1),
     GRANDE_ENIGMA("Grande Enigma", false, "02/08/2024 - 17:49", 1, 1, 1),
@@ -221,6 +223,7 @@ public enum Music {
     RAIVA("Raiva", false, "08/02/2025 - 20:44", 2, 67, 5),
     REABERTURA_DO_KINDOME("Reabertura do Kindome", false, "30/11/2024 - 13:08", 2, 5, 1),
     REGISTRO_DE_FUTEBOL("Registro de Futebol", false, "09/07/2024 - 21:55", 0, 56, 1),
+    REI_DO_CEBOLITOS("Rei do Cebolitos", false, "03/05/2025 - 16:19", 3, 1, 1),
     REINOS_DE_JOGO("Reinos de Jogo", false, "24/04/2024 - 12:57", 0, 3, 2),
     RITMO_INSOLENTE("Ritmo Insolente", false, "29/04/2024 - 16:01", 0, 8, 0),
     SAFIRA_VS_EDUARDA("Safira vs Eduarda", false, "23/07/2024 - 02:20", 0, 80, 9, "Safira vs Eduarda (Versão Funk)", "Safira vs Eduarda (Versão Metal)", "Safira vs Eduarda (Versão Minimalista)", "Safira vs Eduarda (Versão Pagode)", "Safira vs Eduarda (Versão Piano)", "Safira vs Eduarda (Versão Metal 1)", "Safira vs Eduarda (Versão Metal 2)", "Safira vs Eduarda (Versão Metal 3)", "Safira vs Eduarda (Versão Pagode 1)", "Safira vs Eduarda (Versão Metal) (Remastered)", "Safira vs Eduarda (Versão Metal) (Instrumental)", "Safira vs Eduarda (Versão Metal) (Vocals)"),

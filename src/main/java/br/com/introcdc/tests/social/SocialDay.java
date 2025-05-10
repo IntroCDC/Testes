@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.social;
 /*
- * Written by IntroCDC, Bruno Coêlho at 08/07/2024 - 19:54
+ * Written by IntroCDC, Bruno Coelho at 08/07/2024 - 19:54
  */
 
 public class SocialDay {

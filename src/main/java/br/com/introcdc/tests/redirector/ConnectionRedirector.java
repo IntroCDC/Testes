@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.redirector;
 /*
- * Written by IntroCDC, Bruno Coêlho at 15/01/2025 - 22:13
+ * Written by IntroCDC, Bruno Coelho at 15/01/2025 - 22:13
  */
 
 import java.io.*;

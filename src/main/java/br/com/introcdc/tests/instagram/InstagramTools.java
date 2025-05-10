@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.instagram;
 /*
- * Written by IntroCDC, Bruno Coêlho at 09/03/2024 - 06:30
+ * Written by IntroCDC, Bruno Coelho at 09/03/2024 - 06:30
  */
 
 import java.awt.*;

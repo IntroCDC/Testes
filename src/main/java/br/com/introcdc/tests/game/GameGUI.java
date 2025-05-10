@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.game;
 /*
- * Written by IntroCDC, Bruno Coêlho at 10/12/2024 - 02:53
+ * Written by IntroCDC, Bruno Coelho at 10/12/2024 - 02:53
  */
 
 import javax.swing.*;

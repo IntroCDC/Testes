@@ -1,6 +1,6 @@
 package br.com.introcdc.tests.music;
 /*
- * Written by IntroCDC, Bruno Coêlho at 01/11/2024 - 00:47
+ * Written by IntroCDC, Bruno Coelho at 01/11/2024 - 00:47
  */
 
 import br.com.introcdc.tests.advmusic.MP3Musica;
