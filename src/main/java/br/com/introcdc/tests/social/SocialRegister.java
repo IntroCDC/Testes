@@ -573,6 +573,11 @@ public enum SocialRegister {
                     new SocialDay("02/05/2025", "-Casa", "Apartamento", "Laje"),
                     new SocialDay("03/05/2025", "-Laje", "Apartamento", "Vibe 085"),
                     new SocialDay("04/05/2025", "-Vibe 085", "Apartamento", "Praia de Iracema", "Apartamento", "Terminal Antônio Bezerra", "Casa")
+            }),
+    E111(111, "Saída no Dia das Mães",
+            new SocialDay[]{
+                    new SocialDay("10/05/2025", "-Casa", "Iguatemi"),
+                    new SocialDay("11/05/2025", "-Iguatemi", "Apartamento", "Terminal Antônio Bezerra", "-Casa Tia Bruna", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

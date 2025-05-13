@@ -352,8 +352,8 @@ public enum SocialDistance {
     PRAIADEIRACEMA_TERMINALANTONIOBEZERRA("Praia de Iracema", "Terminal Antônio Bezerra", 10600),
     CASA_BARDATRIPA("Casa", "Bar da Tripa", 64000),
     BARDATRIPA_CASALUCAS("Bar da Tripa", "Casa Lucas", 500),
-    CASALUCAS_BARRAGEMDOCATOLÉ("Casa Lucas", "Barragem do Catolé", 5600),
-    CASALUCAS_FARMÁCIAULTRAPOPULAR("Casa Lucas", "Farmácia Ultra Popular", 1000),
+    CASALUCAS_BARRAGEMDOCATOLE("Casa Lucas", "Barragem do Catolé", 5600),
+    CASALUCAS_FARMACIAULTRAPOPULAR("Casa Lucas", "Farmácia Ultra Popular", 1000),
     CASALUCAS_POUSADABORO("Casa Lucas", "Pousada Boro", 500),
     POUSADABORO_CASAEDUARDA("Pousada Boro", "Casa Eduarda", 1300),
     CASA_CASATIAEDUARDA("Casa", "Casa Tia Eduarda", 13900),
@@ -367,6 +367,8 @@ public enum SocialDistance {
     APARTAMENTO_BOÊMIAS("Apartamento", "Boêmias", 100),
     BOÊMIAS_VIBE085("Boêmias", "Vibe 085", 200),
     VIBE085_APARTAMENTO("Vibe 085", "Apartamento", 100),
+    TERMINALANTONIOBEZERRA_CASATIABRUNA("Terminal Antônio Bezerra", "Casa Tia Bruna", 14800),
+    CASATIABRUNA_CASA("Casa Tia Bruna", "Casa", 12100),
     ;
 
     private final String locationOne;
