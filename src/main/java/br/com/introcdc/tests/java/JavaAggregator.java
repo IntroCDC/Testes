@@ -1,15 +1,24 @@
 package br.com.introcdc.tests.java;
 
+import br.com.introcdc.tests.database.StringComponents;
+
 import java.io.IOException;
-import java.nio.charset.*;
-import java.nio.file.*;
-import java.util.*;
-import java.util.stream.*;
+import java.nio.charset.Charset;
+import java.nio.charset.MalformedInputException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JavaAggregator {
 
     public static void main(String[] args) {
-        Path srcDir = Paths.get("C:/Users/Bruno/Documents/GitHub/Kindome/src/main/java/br/com/kindome");
+        Path srcDir = Paths.get("C:/Users/Bruno/Documents/GitHub/Kindome/src/main/java/br/com/kindome/minigames/gameevents");
         Path output = Paths.get("Kindome.java");
 
         // 1) coleta recursivamente todos os .java
@@ -34,18 +43,34 @@ public class JavaAggregator {
             try {
                 fileLines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
             } catch (MalformedInputException e) {
-                System.err.println("Arquivo " + filePath.getFileName() + " não está em UTF-8, tentando CP1252");
                 try {
                     fileLines = Files.readAllLines(filePath, Charset.forName("windows-1252"));
                 } catch (IOException ex) {
-                    System.err.println("Falha ao ler " + filePath.getFileName() + ": " + ex.getMessage());
                     continue;
                 }
             } catch (IOException e) {
-                System.err.println("Falha ao ler " + filePath.getFileName() + ": " + e.getMessage());
                 continue;
             }
             allLines.addAll(fileLines);
+        }
+
+        boolean print = false;
+        List<String> events = StringComponents.arrayList();
+        for (String line : allLines) {
+            if (line.contains("@MiniGameEvent")) {
+                print = true;
+            } else if (print) {
+                print = false;
+                String fullLine = line.split("\\(")[1].split(" event")[0];
+                if (!events.contains(fullLine)) {
+                    events.add(fullLine);
+                    System.out.println(fullLine);
+                }
+            }
+        }
+
+        if (Boolean.TRUE) {
+            return;
         }
 
         // 3) escreve Combined.java em UTF-8

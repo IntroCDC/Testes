@@ -364,11 +364,13 @@ public enum SocialDistance {
     MONTECARLO_CENTRO("MonteCarlo", "Centro", 6000),
     CENTRO_PAGUEMENOS("Centro", "Pague Menos", 3500),
     APARTAMENTO_UMBANDA("Apartamento", "Umbanda", 6000),
-    APARTAMENTO_BOÊMIAS("Apartamento", "Boêmias", 100),
-    BOÊMIAS_VIBE085("Boêmias", "Vibe 085", 200),
+    APARTAMENTO_BOEMIAS("Apartamento", "Boêmias", 100),
+    BOEMIAS_VIBE085("Boêmias", "Vibe 085", 200),
     VIBE085_APARTAMENTO("Vibe 085", "Apartamento", 100),
     TERMINALANTONIOBEZERRA_CASATIABRUNA("Terminal Antônio Bezerra", "Casa Tia Bruna", 14800),
     CASATIABRUNA_CASA("Casa Tia Bruna", "Casa", 12100),
+    NORTHSHOPPING_TORREDENTISTA("North Shopping", "Torre Dentista", 8800),
+    TORREDENTISTA_SHOPPINGBENFICA("Torre Dentista", "Shopping Benfica", 6000),
     ;
 
     private final String locationOne;
