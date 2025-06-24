@@ -587,6 +587,28 @@ public enum SocialRegister {
             new SocialDay[]{
                     new SocialDay("17/05/2025", "-Casa", "Apartamento", "Benfica", "Laje"),
                     new SocialDay("18/05/2025", "-Laje", "-Casa", "Benfica", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E114(114, "Shopping Benfica e Ida no Vibe",
+            new SocialDay[]{
+                    new SocialDay("24/05/2025", "-Casa", "Apartamento", "-Shopping Benfica", "-Casa", "-São Luiz", "-Apartamento", "Vibe 085"),
+                    new SocialDay("25/05/2025", "-Vibe 085", "Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E115(115, "Ida para Psicoanalista na Semana",
+            new SocialDay[]{
+                    new SocialDay("03/06/2025", "-Casa", "-Apartamento", "Lavanderia", "São Luiz", "Lavanderia", "Apartamento"),
+                    new SocialDay("04/06/2025", "-Apartamento", "Terminal Antônio Bezerra", "-Casa")
+            }),
+    E116(116, "Segunda Ida para Palhano",
+            new SocialDay[]{
+                    new SocialDay("13/06/2025", "-Casa", "-Apartamento", "Casa Eduarda", "Apartamento", "-Casa", "-Apartamento", "-Centro", "Apartamento", "Palhano"),
+                    new SocialDay("14/06/2025", "-Palhano", "Centro Palhano", "Palhano", "Restaurante La Familia", "Palhano"),
+                    new SocialDay("15/06/2025", "-Palhano", "Apartamento", "-Iguatemi", "-Casa")
+            }),
+    E117(117, "Uma Ida a Ponte dos Ingleses",
+            new SocialDay[]{
+                    new SocialDay("20/06/2025", "-Casa", "North Shopping", "Apartamento"),
+                    new SocialDay("21/06/2025", "-Apartamento", "Ponte dos Ingleses", "-Apartamento", "Ponte dos Ingleses", "Apartamento"),
+                    new SocialDay("22/06/2025", "-Apartamento", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

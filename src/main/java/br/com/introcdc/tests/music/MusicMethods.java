@@ -14,7 +14,7 @@ import java.util.Map;
 public class MusicMethods {
 
     public static void main(String[] args) throws Exception {
-        discordUnlocker();
+        jsonCreator();
     }
 
     public static void discordUnlocker() {

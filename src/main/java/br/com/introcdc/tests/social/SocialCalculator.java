@@ -31,9 +31,25 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "18/05/2025 - 16:44 (Terminal Antônio Bezerra)";
-    public static String LS_B = "30/03/2025 - 19:30 (Pousada Boro)"; // 29/09/2023 - 16:00 (Apartamento) / 08/10/2023 - 14:00 (Apartamento) / 02/03/2024 - 22:00 (Apartamento) / 21/02/2025 - 02:30 (Apartamento) / 30/03/2025 - 14:00 (Barragem do Catolé) / 30/03/2025 - 19:30 (Pousada Boro)
-    public static String LS = "30/03/2025 - 19:30 (Pousada Boro)"; // 08/10/2023 - 14:00 (Apartamento - Umbrella) / 02/03/2024 - 22:00 (Apartamento - Call My Name) / 30/03/2025 - 19:30 (Pousada Boro - P Diddy)
+    public static String LK = "22/06/2025 - 09:00 (Apartamento)";
+
+
+    public static String LS_B = """
+            #1 29/09/2023 - 16:00 (Apartamento)
+            #2 08/10/2023 - 14:00 (Apartamento)
+            #3 02/03/2024 - 22:00 (Apartamento)
+            #4 21/02/2025 - 02:30 (Apartamento) //
+            #5 30/03/2025 - 14:00 (Barragem do Catolé) //
+            #6 30/03/2025 - 19:30 (Pousada Boro) //
+            #7 24/05/2025 - 22:20 (Apartamento)
+            #8 21/06/2025 - 19:12 (Ponte dos Ingleses) //""";
+
+    public static String LS = """
+            #1 08/10/2023 - 14:00 (Apartamento - Umbrella)
+            #2 02/03/2024 - 22:00 (Apartamento - Call My Name)
+            #3 30/03/2025 - 19:30 (Pousada Boro - P Diddy)
+            #4 24/05/2025 - 22:20 (Apartamento)
+            #5 22/06/2025 - 00:00 (Apartamento - Call My Name)""";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();
@@ -77,8 +93,10 @@ public class SocialCalculator {
 
         print();
         print("LK: " + LK);
-        print("LS: " + LS);
-        print("LS_B: " + LS_B);
+        print("LS:");
+        print(LS);
+        print("LS_B:");
+        print(LS_B);
         print();
 
         print("Dias Juntos: " + DAYS_TOGETHER + " Dias");

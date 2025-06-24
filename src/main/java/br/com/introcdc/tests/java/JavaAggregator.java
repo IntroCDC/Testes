@@ -18,8 +18,8 @@ import java.util.stream.Stream;
 public class JavaAggregator {
 
     public static void main(String[] args) {
-        Path srcDir = Paths.get("C:/Users/Bruno/Documents/GitHub/Kindome/src/main/java/br/com/kindome/minigames/gameevents");
-        Path output = Paths.get("Kindome.java");
+        Path srcDir = Paths.get("C:/Users/Bruno/Documents/GitHub/Kindome/src/main/java/br/com/kindome/minigames/instance/group/groups");
+        Path output = Paths.get("Groups.java");
 
         // 1) coleta recursivamente todos os .java
         List<Path> javaFiles;
@@ -67,10 +67,6 @@ public class JavaAggregator {
                     System.out.println(fullLine);
                 }
             }
-        }
-
-        if (Boolean.TRUE) {
-            return;
         }
 
         // 3) escreve Combined.java em UTF-8

@@ -371,6 +371,13 @@ public enum SocialDistance {
     CASATIABRUNA_CASA("Casa Tia Bruna", "Casa", 12100),
     NORTHSHOPPING_TORREDENTISTA("North Shopping", "Torre Dentista", 8800),
     TORREDENTISTA_SHOPPINGBENFICA("Torre Dentista", "Shopping Benfica", 6000),
+    CASA_SAOLUIZ("Casa", "São Luiz", 6000),
+    APARTAMENTO_LAVANDERIA("Apartamento", "Lavanderia", 250),
+    LAVANDERIA_SAOLUIZ("Lavanderia", "São Luiz", 100),
+    APARTAMENTO_PALHANO("Apartamento", "Palhano", 192000),
+    PALHANO_CENTROPALHANO("Palhano", "Centro Palhano", 2200),
+    PALHANO_RESTAURANTELAFAMILIA("Palhano", "Restaurante La Familia", 2200),
+    APARTAMENTO_PONTEDOSINGLESES("Apartamento", "Ponte dos Ingleses", 350),
     ;
 
     private final String locationOne;
