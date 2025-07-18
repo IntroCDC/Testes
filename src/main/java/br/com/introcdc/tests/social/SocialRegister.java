@@ -609,6 +609,15 @@ public enum SocialRegister {
                     new SocialDay("20/06/2025", "-Casa", "North Shopping", "Apartamento"),
                     new SocialDay("21/06/2025", "-Apartamento", "Ponte dos Ingleses", "-Apartamento", "Ponte dos Ingleses", "Apartamento"),
                     new SocialDay("22/06/2025", "-Apartamento", "-Casa")
+            }),
+    E118(118, "Endoscopia e Dias no Apartamento",
+            new SocialDay[]{
+                    new SocialDay("06/07/2025", "-Casa", "Casa Eduarda", "Apartamento", "Casa"),
+                    new SocialDay("07/07/2025", "-Casa", "Apartamento", "Psiquiatra", "Apartamento"),
+                    new SocialDay("08/07/2025", "-Apartamento", "Prontoclinica", "Apartamento", "Smart Fit", "-Apartamento", "-Smart Fit", "Apartamento"),
+                    new SocialDay("09/07/2025", "-Apartamento", "Smart Fit", "Apartamento", "Casa"),
+                    new SocialDay("10/07/2025", "-Casa", "Apartamento", "-Psiquiatra", "-Unimed", "-Apartamento"),
+                    new SocialDay("11/07/2025", "-Apartamento", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

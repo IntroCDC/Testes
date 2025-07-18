@@ -378,6 +378,9 @@ public enum SocialDistance {
     PALHANO_CENTROPALHANO("Palhano", "Centro Palhano", 2200),
     PALHANO_RESTAURANTELAFAMILIA("Palhano", "Restaurante La Familia", 2200),
     APARTAMENTO_PONTEDOSINGLESES("Apartamento", "Ponte dos Ingleses", 350),
+    APARTAMENTO_PSIQUIATRA("Apartamento", "Psiquiatra", 3400),
+    APARTAMENTO_PRONTOCLINICA("Apartamento", "Prontoclinica", 7500),
+    PSIQUIATRA_UNIMED("Psiquiatra", "Unimed", 2500),
     ;
 
     private final String locationOne;
