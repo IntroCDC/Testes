@@ -26,10 +26,7 @@ public class MiniGameMethods {
 
         PrintWriter writer = new PrintWriter("C:/Users/Bruno/Desktop/result.txt");
 
-        List<String> done = List.of("MegaLuckyBlock", "LuckyBlockRace", "OneLuckyBlock", "LuckyBlockWorld", "UNO", "LuckyDoors", "SheepRace",
-                "CastleSiege", "DeathTag", "SuperJokenpo", "TrapRace", "OITC", "ObsidianHunt", "GunGame", "SpeedBuilders", "ContinentalWar", "MobWar",
-                "Football", "BeeWars", "MazeGame", "RavagerGame", "YellowClock", "BlockDash", "SkyGrid", "Spleef", "Splegg", "BowSpleef", "Leeaf",
-                "GlassGame", "PaintArena", "Fisherman", "GlassBridge", "IceFloor", "MiniGolf", "DripFight", "WallGame");
+        List<String> done = List.of();
         System.out.println("MINIGAMES: " + done.size() + "/200 (" + GameMatch.percent(done.size(), 200) + "%)");
 
         Scanner scanner = new Scanner(System.in);

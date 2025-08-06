@@ -419,7 +419,7 @@ public enum SocialRegister {
             }),
     E77(77, "Um Almoço de Niver da minha Mãe",
             new SocialDay[]{
-                    new SocialDay("11/11/2024", "-Casa", "Grau Técnico", "Centro", "Grau Técnico", "-Casa", "-Gastro", "-Casa", "Grau Técnico", "Suplementos", "Casa", "Dom Espeto", "Terminal Antônio Bezerra", "-Casa")
+                    new SocialDay("11/11/2024", "-Casa", "Grau Técnico", "Centro", "Grau Técnico", "-Casa", "-Prontoclinica", "-Casa", "Grau Técnico", "Suplementos", "Casa", "Dom Espeto", "Terminal Antônio Bezerra", "-Casa")
             }),
     E78(78, "Presente para Mãe 2024",
             new SocialDay[]{
@@ -471,7 +471,7 @@ public enum SocialRegister {
     E89(89, "Virada do Ano de 2025 com 7 Pessoas",
             new SocialDay[]{
                     new SocialDay("29/12/2024", "-Casa", "Casa Eduarda", "Apartamento", "Pão de Açúcar", "Apartamento", "Iguatemi", "Casa", "Apartamento", "Praia de Iracema", "Apartamento"),
-                    new SocialDay("30/12/2024", "-Apartamento", "Casa Lucas", "Apartamento", "Pinheiro", "Apartamento", "Praia de Iracema", "Apartamento"),
+                    new SocialDay("30/12/2024", "-Apartamento", "Casa Lucas", "Apartamento", "Mercado Pinheiro", "Apartamento", "Praia de Iracema", "Apartamento"),
                     new SocialDay("31/12/2024", "-Apartamento", "Praia de Iracema", "Apartamento", "Praia de Iracema"),
                     new SocialDay("01/01/2025", "-Praia de Iracema", "Apartamento", "Casa Lucas", "Apartamento", "Mucuripe", "Apartamento"),
                     new SocialDay("02/01/2025", "-Apartamento", "Casa Eduarda", "-Casa")
@@ -618,6 +618,28 @@ public enum SocialRegister {
                     new SocialDay("09/07/2025", "-Apartamento", "Smart Fit", "Apartamento", "Casa"),
                     new SocialDay("10/07/2025", "-Casa", "Apartamento", "-Psiquiatra", "-Unimed", "-Apartamento"),
                     new SocialDay("11/07/2025", "-Apartamento", "Casa Eduarda", "-Casa")
+            }),
+    E119(119, "Uma Ida Surpresa",
+            new SocialDay[]{
+                    new SocialDay("20/07/2025", "-Casa", "-Casa Lucas", "São Gonçalo do Amarante"),
+                    new SocialDay("21/07/2025", "-São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "-Casa")
+            }),
+    E120(120, "As 2 Semanas do Aniversário",
+            new SocialDay[]{
+                    new SocialDay("23/07/2025", "-Casa", "Apartamento"),
+                    new SocialDay("24/07/2025", "-Apartamento", "São Luiz", "-Conserto Carro", "-Casa", "Smart Fit", "Apartamento", "-Casa", "-Apartamento"),
+                    new SocialDay("25/07/2025", "-Apartamento"),
+                    new SocialDay("26/07/2025", "-Apartamento", "-Casa", "-Castelão", "-Casa", "-Apartamento"),
+                    new SocialDay("27/07/2025", "-Apartamento", "-Casa"),
+                    new SocialDay("28/07/2025", "-Casa", "Apartamento"),
+                    new SocialDay("29/07/2025", "-Apartamento", "-Casa", "-Prontoclinica", "-Casa", "-Apartamento"),
+                    new SocialDay("30/07/2025", "-Apartamento", "Shopping Benfica", "Centro", "Apartamento"),
+                    new SocialDay("31/07/2025", "-Apartamento"),
+                    new SocialDay("01/08/2025", "-Apartamento", "São Luiz", "Apartamento", "-Casa", "-Apartamento", "Iguatemi"),
+                    new SocialDay("02/08/2025", "-Iguatemi", "Apartamento", "Mucuripe", "Apartamento"),
+                    new SocialDay("03/08/2025", "-Apartamento", "-Shopping Benfica", "-Casa", "-Apartamento"),
+                    new SocialDay("04/08/2025", "-Apartamento", "-Psiquiatra", "-Iguatemi", "-Apartamento", "-Mercado Pinheiro", "-São Luiz", "-Apartamento", "Vasto Restaurante", "Apartamento", "-Casa", "-Apartamento"),
+                    new SocialDay("05/08/2025", "-Apartamento", "Ibis", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

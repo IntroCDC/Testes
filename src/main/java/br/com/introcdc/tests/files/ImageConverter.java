@@ -15,7 +15,7 @@ public class ImageConverter {
 
     public static void main(String[] args) {
         for (File file : new File(args.length == 0 ? "C:/Users/Bruno/Downloads" : Main.arg(args)).listFiles()) {
-            convertImage(file, "png", "jpg");
+            convertImage(file, "webp", "png");
         }
     }
 

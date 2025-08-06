@@ -685,7 +685,7 @@ public class ForumMethods {
 
     public static final Map<String, String> TAG_DESCRIPTION = ImmutableMap.<String, String>builder()
             .put("roberta coelho", "Mãe").put("lenon maximiano", "Primo por parte de Pai").put("reginaldo sabino", "Pai")
-            .put("rafael araujo", "Ex-Amigo, conhecido pela amiga de Roberta em 2015").put("pedro maximiano", "Primo por parte de Pai")
+            .put("rafael araujo", "Amigo, conhecido pela amiga de Roberta em 2015").put("pedro maximiano", "Primo por parte de Pai")
             .put("alison azevedo", "Amigo conhecido pelo Colégio Equipe em 2011").put("luciano segundo", "Irmão por parte de Mãe")
             .put("maria eduarda", "Sobrinha, filha de Luciano").put("meel", "Ex-amiga, conhecida em chamada de grupo no Skype em 2014")
             .put("juliana segundo", "Cunhada, esposa de Luciano em 2011").put("sofia joca", "Sobrinha, filha de Luciano")

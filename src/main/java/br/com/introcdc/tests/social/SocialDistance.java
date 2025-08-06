@@ -317,7 +317,7 @@ public enum SocialDistance {
     CASA_DETRAN("Casa", "Detran", 3500),
     DETRAN_GRAUTECNICO("Detran", "Grau Técnico", 3500),
     GRAUTECNICO_NORTHSHOPPING("Grau Técnico", "North Shopping", 4200),
-    CASA_GASTRO("Casa", "Gastro", 2200),
+    CASA_PRONTOCLINICA("Casa", "Prontoclinica", 2200),
     GRAUTECNICO_SUPLEMENTOS("Grau Técnico", "Suplementos", 1000),
     SUPLEMENTOS_CASA("Suplementos", "Casa", 3300),
     CASA_DOMESPETO("Casa", "Dom Espeto", 1800),
@@ -381,6 +381,11 @@ public enum SocialDistance {
     APARTAMENTO_PSIQUIATRA("Apartamento", "Psiquiatra", 3400),
     APARTAMENTO_PRONTOCLINICA("Apartamento", "Prontoclinica", 7500),
     PSIQUIATRA_UNIMED("Psiquiatra", "Unimed", 2500),
+    SAOLUIZ_CONSERTOCARRO("São Luiz", "Conserto Carro", 5500),
+    CONSERTOCARRO_CASA("Conserto Carro", "Casa", 4800),
+    PSIQUIATRA_IGUATEMI("Psiquiatra", "Iguatemi", 2400),
+    MERCADOPINHEIRO_SAOLUIZ("Mercado Pinheiro", "São Luiz", 750),
+    APARTAMENTO_VASTORESTAURANTE("Apartamento", "Vasto Restaurante", 3900),
     ;
 
     private final String locationOne;

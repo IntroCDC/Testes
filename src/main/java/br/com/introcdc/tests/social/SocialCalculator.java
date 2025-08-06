@@ -42,14 +42,17 @@ public class SocialCalculator {
             #6 30/03/2025 - 19:30 (Pousada Boro) //
             #7 24/05/2025 - 22:20 (Apartamento)
             #8 21/06/2025 - 19:12 (Ponte dos Ingleses) //
-            #9 10/07/2025 - 02:50 (Casa)""";
+            #9 10/07/2025 - 02:50 (Casa)
+            #10 25/07/2025 - 13:00 (Apartamento)
+            #11 04/08/2025 - 03:15 (Apartamento)""";
 
     public static String LS = """
             #1 08/10/2023 - 14:00 (Apartamento - Umbrella)
             #2 02/03/2024 - 22:00 (Apartamento - Call My Name)
             #3 30/03/2025 - 19:30 (Pousada Boro - P Diddy)
             #4 24/05/2025 - 22:20 (Apartamento)
-            #5 22/06/2025 - 00:00 (Apartamento - Call My Name)""";
+            #5 22/06/2025 - 00:00 (Apartamento - Call My Name)
+            #6 04/08/2025 - 03:30 (Apartamento)""";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();
