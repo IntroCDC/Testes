@@ -26,16 +26,20 @@ public class MusicMethods {
                         Music.RAFAEL_AULER_3_5,
                         Music.RITUAL_DAS_GATINHAS,
                         Music.JINGLE_DAS_GATINHAS,
+                        Music.JUBARACACHUBA,
+                        Music.MUITO_PESADO,
                         Music.REGISTRO_DE_FUTEBOL,
                         Music.BODE,
                         Music.KINDOME,
                         Music.COCO_NA_ARARIUS,
                         Music.AGUINHA_GELADINHA,
+                        Music.SAFIRA_VS_EDUARDA,
                         Music.HACKINGS,
                         Music.AGUINHA_GELADINHA_VERSAO_PISEIRO,
                         Music.ENGRACADAO,
                         Music.ENGRACADAO_VERSAO_PISEIRO,
                         Music.SANIDADE_MENTAL,
+                        Music.CAGADA_NERVOSA,
                         Music.STILL_WATER,
                         Music.AGUINHA_QUENTINHA,
                         Music.AMOR_DE_JOGO,
@@ -56,7 +60,11 @@ public class MusicMethods {
                         Music.GAROTAS_PALHACO,
                         Music.PARABENS_DE_KOS,
                         Music.PARABENS_KOS,
-                        Music.PRIMEIRO_DE_ABRIL)
+                        Music.PRIMEIRO_DE_ABRIL,
+                        Music.ARROCHA_DO_MARIAUM,
+                        Music.TORNEIO_DE_YOUTUBERS,
+                        Music.GOSTOSINHO,
+                        Music.OPRESSOR_DEPRECIADOR)
         );
         Map<Integer, Integer> amount = new HashMap<>();
         System.out.println("\uD83D\uDD13 As Desbloqueadas: (" + unlocked.size() + "/" + Music.values().length + ")");
@@ -66,7 +74,7 @@ public class MusicMethods {
         }
         System.out.println();
         System.out.println("Álbuns:");
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i <= 3; i++) {
             System.out.println(" - " + Music.albumName(i) + ": " + amount.get(i) + "/" + Music.getMusicsAmountInAlbum(i));
         }
     }
