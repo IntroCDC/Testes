@@ -104,6 +104,7 @@ public class MusicMethods {
             JsonObject musicObject = new JsonObject();
             musicObject.addProperty("creation", music.getCreation());
             musicObject.addProperty("album", music.getAlbumName());
+            musicObject.addProperty("number", music.getNumber());
             jsonObject.add(music.getMusicName(), musicObject);
         }
         System.out.println(jsonObject);

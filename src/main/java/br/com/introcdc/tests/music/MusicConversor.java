@@ -7,7 +7,7 @@ import java.io.File;
 
 public class MusicConversor {
 
-    public static boolean MISTER_IA = false;
+    public static boolean MISTER_IA = true;
 
     public static void main(String[] args) {
         File directory = new File("C:/Users/Bruno/Downloads");
