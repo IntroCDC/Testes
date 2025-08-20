@@ -63,117 +63,39 @@ public class GameCup {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public long getPrize() {
-        return prize;
-    }
-
-    public GameCupType getCupType() {
-        return cupType;
-    }
-
-    public Map<GameTeam, Integer> getPoints() {
-        return points;
-    }
-
-    public Map<GameTeam, Integer> getMatchs() {
-        return matchs;
-    }
-
-    public Map<GameTeam, Integer> getGoals() {
-        return goals;
-    }
-
-    public Map<GameTeam, Integer> getGoalst() {
-        return goalst;
-    }
-
-    public Map<GameTeam, Integer> getVictories() {
-        return victories;
-    }
-
-    public Map<GameTeam, Integer> getLoses() {
-        return loses;
-    }
-
-    public Map<GameTeam, Integer> getDraw() {
-        return draw;
-    }
-
-    public Map<GameTeam, Integer> getSg() {
-        return sg;
-    }
-
-    public Map<GameTeam, String> getReason() {
-        return reason;
-    }
-
-    public List<GameTeam> getTeams() {
-        return teams;
-    }
-
-    public List<GameMatch> getMatchList() {
-        return matchList;
-    }
-
-    public boolean isFirstStep() {
-        return firstStep;
-    }
-
-    public void setFirstStep(boolean firstStep) {
-        this.firstStep = firstStep;
-    }
-
-    public Function<GameTeam, Boolean> getJoinTest() {
-        return joinTest;
-    }
-
-    public int getMaxTeams() {
-        return maxTeams;
-    }
-
-    public int getMatches() {
-        return matches;
-    }
-
-    public void setMatches(int matches) {
-        this.matches = matches;
-    }
-
-    public boolean isExecuted() {
-        return executed;
-    }
-
-    public GameCupRegionType getRegionType() {
-        return regionType;
-    }
-
-    public void setExecuted(boolean executed) {
-        this.executed = executed;
-    }
-
-    public boolean isStateCup() {
-        return getRegionType() == GameCupRegionType.STATE;
-    }
-
-    public boolean isRegionCup() {
-        return getRegionType() == GameCupRegionType.REGION;
-    }
-
-    public GameTeam getWinner() {
-        return winner;
-    }
+    public String getName() { return name; }
+    public String getKey() { return key; }
+    public long getPrize() { return prize; }
+    public GameCupType getCupType() { return cupType; }
+    public Map<GameTeam, Integer> getPoints() { return points; }
+    public Map<GameTeam, Integer> getMatchs() { return matchs; }
+    public Map<GameTeam, Integer> getGoals() { return goals; }
+    public Map<GameTeam, Integer> getGoalst() { return goalst; }
+    public Map<GameTeam, Integer> getVictories() { return victories; }
+    public Map<GameTeam, Integer> getLoses() { return loses; }
+    public Map<GameTeam, Integer> getDraw() { return draw; }
+    public Map<GameTeam, Integer> getSg() { return sg; }
+    public Map<GameTeam, String> getReason() { return reason; }
+    public List<GameTeam> getTeams() { return teams; }
+    public List<GameMatch> getMatchList() { return matchList; }
+    public boolean isFirstStep() { return firstStep; }
+    public void setFirstStep(boolean firstStep) { this.firstStep = firstStep; }
+    public Function<GameTeam, Boolean> getJoinTest() { return joinTest; }
+    public int getMaxTeams() { return maxTeams; }
+    public int getMatches() { return matches; }
+    public void setMatches(int matches) { this.matches = matches; }
+    public boolean isExecuted() { return executed; }
+    public GameCupRegionType getRegionType() { return regionType; }
+    public void setExecuted(boolean executed) { this.executed = executed; }
+    public boolean isStateCup() { return getRegionType() == GameCupRegionType.STATE; }
+    public boolean isRegionCup() { return getRegionType() == GameCupRegionType.REGION; }
+    public GameTeam getWinner() { return winner; }
 
     public void addAllTeams() {
         List<String> items = new ArrayList<>();
         int number = 1;
+
+        // Adiciona times que passam no joinTest
         for (GameTeam gameTeam : GameTeam.getTeamList()) {
             if (getJoinTest().apply(gameTeam)) {
                 getTeams().add(gameTeam);
@@ -187,61 +109,63 @@ public class GameCup {
         }
         Collections.shuffle(items);
 
-        if (getMaxTeams() > 0 && getTeams().size() >= getMaxTeams() && isRegionCup()) {
+        // Corte por limite de vagas — pega o "menos pontuado" do estadual correspondente
+        if (getMaxTeams() > 0 && getTeams().size() > getMaxTeams() && isRegionCup()) {
             List<GameTeam> ignore = new ArrayList<>();
             while (getTeams().size() > getMaxTeams()) {
                 for (String state : new ArrayList<>(items)) {
-                    GameCup gameCup = get(state);
+                    GameCup stateCup = get(state);
+                    if (stateCup == null) continue; // estado sem copa cadastrada
 
-                    int less = 1_000_000_000;
+                    int lessPts = Integer.MAX_VALUE;
                     GameTeam lessTeam = null;
-                    for (GameTeam gameTeam : gameCup.getTeams()) {
-                        if (ignore.contains(gameTeam)) {
-                            continue;
-                        }
-                        if (gameCup.getPoints().get(gameTeam) < less) {
-                            less = gameCup.getPoints().get(gameTeam);
-                            lessTeam = gameTeam;
+                    for (GameTeam team : stateCup.getTeams()) {
+                        if (ignore.contains(team)) continue;
+                        int pts = stateCup.getPoints().getOrDefault(team, 0); // SAFE
+                        if (pts < lessPts) {
+                            lessPts = pts;
+                            lessTeam = team;
                         }
                     }
 
-                    ignore.add(lessTeam);
-                    getTeams().remove(lessTeam);
+                    if (lessTeam != null) {
+                        ignore.add(lessTeam);
+                        getTeams().remove(lessTeam);
+                    }
+                    if (getTeams().size() <= getMaxTeams()) break;
                 }
             }
         }
 
+        // Motivo por colocação no estadual (usando pontos com getOrDefault)
         if (isRegionCup()) {
             for (String state : new ArrayList<>(items)) {
-                GameCup gameCup = get(state);
-                List<GameTeam> teamList = new ArrayList<>(gameCup.getTeams());
+                GameCup stateCup = get(state);
+                if (stateCup == null) continue;
+
+                List<GameTeam> teamList = new ArrayList<>(stateCup.getTeams());
                 int pos = 1;
                 while (!teamList.isEmpty()) {
-                    int more = -1;
+                    int more = Integer.MIN_VALUE;
                     GameTeam moreTeam = null;
-                    for (GameTeam gameTeam : teamList) {
-                        if (gameCup.getPoints().get(gameTeam) > more) {
-                            more = gameCup.getPoints().get(gameTeam);
-                            moreTeam = gameTeam;
+                    for (GameTeam t : teamList) {
+                        int pts = stateCup.getPoints().getOrDefault(t, 0); // SAFE
+                        if (pts > more) {
+                            more = pts;
+                            moreTeam = t;
                         }
                     }
-
+                    if (moreTeam == null) break;
                     teamList.remove(moreTeam);
-                    getReason().put(moreTeam, pos++ + "º lugar em " + gameCup.getName());
+                    getReason().put(moreTeam, pos++ + "º lugar em " + stateCup.getName());
                 }
             }
         }
     }
 
     public boolean follow() {
-        if (GameMain.FOLLOW_CUP.contains(getName())) {
-            return true;
-        }
-        for (GameTeam gameTeam : getTeams()) {
-            if (gameTeam.isFollow()) {
-                return true;
-            }
-        }
+        if (GameMain.FOLLOW_CUP.contains(getName())) return true;
+        for (GameTeam gameTeam : getTeams()) if (gameTeam.isFollow()) return true;
         return false;
     }
 
@@ -254,10 +178,7 @@ public class GameCup {
             System.out.println("========================================");
             System.out.println();
 
-            try {
-                Thread.sleep(GameMain.TIME);
-            } catch (InterruptedException ignored) {
-            }
+            try { Thread.sleep(GameMain.TIME); } catch (InterruptedException ignored) {}
         }
 
         randomize();
@@ -270,10 +191,7 @@ public class GameCup {
         boolean print = GameMain.PRINTS_ONLY.isEmpty() || GameMain.PRINTS_ONLY.contains(getKey().toUpperCase());
         if (!print) {
             for (GameTeam gameTeam : getTeams()) {
-                if (gameTeam.isFollow()) {
-                    print = true;
-                    break;
-                }
+                if (gameTeam.isFollow()) { print = true; break; }
             }
         }
 
@@ -288,10 +206,7 @@ public class GameCup {
             System.out.println("========================================");
             System.out.println();
 
-            try {
-                Thread.sleep((long) GameMain.TIME * (follow ? 1 : 2));
-            } catch (InterruptedException ignored) {
-            }
+            try { Thread.sleep((long) GameMain.TIME * (follow ? 1 : 2)); } catch (InterruptedException ignored) {}
         }
     }
 
@@ -303,24 +218,17 @@ public class GameCup {
             int more = -1;
             GameTeam moreTeam = null;
             for (GameTeam gameTeam : new ArrayList<>(teamList)) {
-                if (getPoints().get(gameTeam) > more) {
-                    more = getPoints().get(gameTeam);
-                    moreTeam = gameTeam;
-                }
+                int pts = getPoints().getOrDefault(gameTeam, 0); // SAFE
+                if (pts > more) { more = pts; moreTeam = gameTeam; }
             }
 
             if (win) {
                 moreTeam.setMoney(moreTeam.getMoney() + (getPrize() / number));
-
-                if (number == 1) {
-                    moreTeam.addTitle();
-                    winner = moreTeam;
-                }
+                if (number == 1) { moreTeam.addTitle(); winner = moreTeam; }
 
                 if (number == 1 && moreTeam.getName().equalsIgnoreCase("Fortaleza") && getName().toUpperCase().contains("MUNDIAL")) {
                     END_CODE = true;
                 }
-
                 if (number <= 4 && getName().contains("Brasileirão") && !getName().contains("Série A")) {
                     moreTeam.setDivision(moreTeam.getDivision() - 1);
                 }
@@ -330,11 +238,15 @@ public class GameCup {
             }
 
             if (print) {
-                System.out.println(" " + number + "º: " + moreTeam.getName() + (win ? " - " + getReason().get(moreTeam) : "") + " (" + moreTeam.getState() + ";" + moreTeam.division() + ";" + moreTeam.getCountry() + ")" + " - P: " + (getPoints().get(moreTeam) / 1000) + " - V: " +
-                        getVictories().get(moreTeam) + " - D: " + getLoses().get(moreTeam) + " - E: " + getDraw().get(moreTeam) + " - G: " + getGoals().get(moreTeam) +
-                        " - GL: " + getGoalst().get(moreTeam) + " - SG: " + getSg().get(moreTeam) + " - J: " + getMatchs().get(moreTeam) + " /// J: " + moreTeam.getMatchs() + " - V: " +
-                        moreTeam.getVictories() + " - D: " + moreTeam.getLoses() + " - E: " + moreTeam.getDraws() + " - G: " + moreTeam.getGoals() +
-                        " - GL: " + moreTeam.getGoalst() + " - SG: " + moreTeam.getSg() + " - R$: " + formatNumber(moreTeam.getMoney()) + " - T: " + moreTeam.getTitles());
+                System.out.println(" " + number + "º: " + moreTeam.getName() + (win ? " - " + getReason().getOrDefault(moreTeam, "") : "") +
+                        " (" + moreTeam.getState() + ";" + moreTeam.division() + ";" + moreTeam.getCountry() + ")" +
+                        " - P: " + (getPoints().getOrDefault(moreTeam, 0) / 1000) + " - V: " + getVictories().getOrDefault(moreTeam, 0) +
+                        " - D: " + getLoses().getOrDefault(moreTeam, 0) + " - E: " + getDraw().getOrDefault(moreTeam, 0) +
+                        " - G: " + getGoals().getOrDefault(moreTeam, 0) + " - GL: " + getGoalst().getOrDefault(moreTeam, 0) +
+                        " - SG: " + getSg().getOrDefault(moreTeam, 0) + " - J: " + getMatchs().getOrDefault(moreTeam, 0) + " /// J: " + moreTeam.getMatchs() +
+                        " - V: " + moreTeam.getVictories() + " - D: " + moreTeam.getLoses() + " - E: " + moreTeam.getDraws() +
+                        " - G: " + moreTeam.getGoals() + " - GL: " + moreTeam.getGoalst() + " - SG: " + moreTeam.getSg() +
+                        " - R$: " + formatNumber(moreTeam.getMoney()) + " - T: " + moreTeam.getTitles());
             }
 
             number++;
@@ -345,7 +257,6 @@ public class GameCup {
     public static String formatNumber(long number) {
         String numberString = String.valueOf(number);
         StringBuilder result = new StringBuilder();
-
         int counter = 0;
         for (int i = numberString.length() - 1; i >= 0; i--) {
             result.insert(0, numberString.charAt(i));
@@ -355,16 +266,12 @@ public class GameCup {
                 counter = 0;
             }
         }
-
         return result.toString();
     }
 
     public void randomize() {
         if (getCupType().isElimination()) {
-            if (isFirstStep()) {
-                return;
-            }
-
+            if (isFirstStep()) { return; }
             return;
         }
 
@@ -378,9 +285,7 @@ public class GameCup {
             getDraw().put(gameTeam, 0);
             getSg().put(gameTeam, 0);
             for (GameTeam otherTeam : getTeams()) {
-                if (gameTeam == otherTeam) {
-                    continue;
-                }
+                if (gameTeam == otherTeam) continue;
                 getMatchList().add(new GameMatch(this, gameTeam, otherTeam));
             }
         }
@@ -396,13 +301,10 @@ public class GameCup {
         }
 
         for (GameMatch match : getMatchList()) {
-            if (match.isMatchExecuted()) {
-                continue;
-            }
+            if (match.isMatchExecuted()) continue;
             match.startMatch();
             return true;
         }
         return false;
     }
-
 }

@@ -8,7 +8,6 @@ public enum GameCupType {
     ELIMINATION;
 
     public boolean isElimination() {
-        return false;
+        return this == ELIMINATION;
     }
-
 }

@@ -24,6 +24,7 @@ public class ImageConverter {
             return;
         }
         try {
+            System.out.println(file.getName());
             BufferedImage image = ImageIO.read(file);
 
             if (image == null) {
@@ -31,7 +32,12 @@ public class ImageConverter {
                 return;
             }
 
-            ImageIO.write(image, to, new File(file.getAbsolutePath().replace("." + from, "." + to)));
+            File search = new File(file.getAbsolutePath().replace("." + from, "." + to));
+            if (search.exists()) {
+                System.out.println("Arquivo já existente: " + search.getName());
+                return;
+            }
+            ImageIO.write(image, to, search);
             FileComponents.deleteFile(file);
             System.out.println("Conversão concluída com sucesso!");
         } catch (IOException e) {

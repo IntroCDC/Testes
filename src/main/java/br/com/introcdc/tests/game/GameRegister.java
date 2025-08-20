@@ -143,7 +143,7 @@ public class GameRegister {
         // Ceará
         new GameTeam("Fortaleza", "FOR", "FEC", "Fortaleza Esporte Clube",
                 "Leão do Pici", "Arena Castelão", 63903,
-                "Ceará", "Nordeste", "Brasil", "América do Sul", 1);
+                "Ceará", "Nordeste", "Brasil", "América do Sul", 1, true);
         new GameTeam("Ceará", "CEA", "CSC", "Ceará Sporting Club",
                 "Vozão", "Arena Castelão", 63903,
                 "Ceará", "Nordeste", "Brasil", "América do Sul", 1);

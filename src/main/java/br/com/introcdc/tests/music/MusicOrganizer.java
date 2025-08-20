@@ -4,6 +4,7 @@ package br.com.introcdc.tests.music;
  */
 
 import br.com.introcdc.tests.database.FileComponents;
+import br.com.introcdc.tests.database.StringComponents;
 import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.ID3v24Tag;
@@ -151,7 +152,7 @@ public class MusicOrganizer {
             }
             fileName = fileName.split(" \\(")[0];
             fileName = fileName.replace(".mp3", ".png");
-            File cover = new File(file.getName().startsWith("Mister IA") && MISTER_IA ? pngfolder.getParentFile() : pngfolder, fileName + (fileName.endsWith(".png") ? "" : ".png"));
+            File cover = new File(file.getName().startsWith("Mister IA") && MISTER_IA ? pngfolder.getParentFile() : pngfolder, StringComponents.removeAcents(fileName) + (fileName.endsWith(".png") ? "" : ".png"));
             if (!cover.exists()) {
                 System.out.println("cover não encontrado " + file.getName() + " - " + cover.getName());
                 continue;

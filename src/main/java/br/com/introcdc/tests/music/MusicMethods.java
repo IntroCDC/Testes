@@ -3,6 +3,7 @@ package br.com.introcdc.tests.music;
  * Written by IntroCDC, Bruno Coelho at 15/02/2025 - 00:05
  */
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class MusicMethods {
 
     public static void main(String[] args) throws Exception {
-        jsonCreator();
+        discordUnlocker();
     }
 
     public static void discordUnlocker() {
@@ -42,13 +43,20 @@ public class MusicMethods {
                         Music.CAGADA_NERVOSA,
                         Music.STILL_WATER,
                         Music.AGUINHA_QUENTINHA,
+                        Music._8_BIT_PIANO,
+                        Music.BEDWARS_ENTRE_4_JOGADORES,
                         Music.AMOR_DE_JOGO,
                         Music.GOSTO_DE_COCO,
+                        Music.INTRO_NA_CHAMADA,
+                        Music.SETE_NA_CHAMADA,
                         Music.CHEGOU_O_REMEDIO,
+                        Music.ESCOVANDO_OS_DENTES,
                         Music.ONI_CHAN,
                         Music.MARIAUM_E_JAPONESA,
+                        Music.SAFIRA,
                         Music.CLAUDINHO,
                         Music.DESTROY_EVERYTHING,
+                        Music.THE_END,
                         Music.ARROCHA_DO_JOVEM_DINAMICO,
                         Music.SARAIVA,
                         Music.KIRITO_O_BODE,
@@ -62,6 +70,7 @@ public class MusicMethods {
                         Music.PARABENS_KOS,
                         Music.PRIMEIRO_DE_ABRIL,
                         Music.ARROCHA_DO_MARIAUM,
+                        Music.PARABENS_GABRIEL,
                         Music.TORNEIO_DE_YOUTUBERS,
                         Music.GOSTOSINHO,
                         Music.OPRESSOR_DEPRECIADOR)
@@ -105,6 +114,23 @@ public class MusicMethods {
             musicObject.addProperty("creation", music.getCreation());
             musicObject.addProperty("album", music.getAlbumName());
             musicObject.addProperty("number", music.getNumber());
+            musicObject.addProperty("subVersions", music.getSubVersions());
+            musicObject.addProperty("misteria", music.isMisterIA());
+            JsonArray versions = new JsonArray();
+            for (String subVersion : music.getAlternativeVersions()) {
+                versions.add(subVersion);
+            }
+            musicObject.add("alternativeVersions", versions);
+            JsonArray subVersions = new JsonArray();
+            for (String subVersion : music.getSubAlternativeVersions()) {
+                subVersions.add(subVersion);
+            }
+            musicObject.add("subAlternativeVersions", subVersions);
+            JsonArray tags = new JsonArray();
+            for (String tag : music.getTags()) {
+                tags.add(tag);
+            }
+            musicObject.add("tags", tags);
             jsonObject.add(music.getMusicName(), musicObject);
         }
         System.out.println(jsonObject);

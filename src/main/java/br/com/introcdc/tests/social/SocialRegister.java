@@ -640,6 +640,11 @@ public enum SocialRegister {
                     new SocialDay("03/08/2025", "-Apartamento", "-Shopping Benfica", "-Casa", "-Apartamento"),
                     new SocialDay("04/08/2025", "-Apartamento", "-Psiquiatra", "-Iguatemi", "-Apartamento", "-Mercado Pinheiro", "-São Luiz", "-Apartamento", "Vasto Restaurante", "Apartamento", "-Casa", "-Apartamento"),
                     new SocialDay("05/08/2025", "-Apartamento", "Ibis", "Casa Eduarda", "-Casa")
+            }),
+    E121(121, "Cancelamento da Smart Fit",
+            new SocialDay[]{
+                    new SocialDay("18/08/2025", "-Casa", "-CEATD", "Apartamento"),
+                    new SocialDay("19/08/2025", "-Apartamento", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

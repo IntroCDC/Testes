@@ -59,6 +59,8 @@ public class GameTeam {
         this.division = division;
         this.follow = follow;
 
+        System.out.println("[\"id\"=>\"");
+
         getTeamList().add(this);
     }
 

@@ -386,6 +386,8 @@ public enum SocialDistance {
     PSIQUIATRA_IGUATEMI("Psiquiatra", "Iguatemi", 2400),
     MERCADOPINHEIRO_SAOLUIZ("Mercado Pinheiro", "São Luiz", 750),
     APARTAMENTO_VASTORESTAURANTE("Apartamento", "Vasto Restaurante", 3900),
+    CASA_CEATD("Casa", "CEATD", 8500),
+    CEATD_APARTAMENTO("CEATD", "Apartamento", 8800),
     ;
 
     private final String locationOne;
