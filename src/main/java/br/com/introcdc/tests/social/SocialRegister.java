@@ -645,6 +645,11 @@ public enum SocialRegister {
             new SocialDay[]{
                     new SocialDay("18/08/2025", "-Casa", "-CEATD", "Apartamento"),
                     new SocialDay("19/08/2025", "-Apartamento", "-Casa")
+            }),
+    E122(122, "Taíba de Madrugada",
+            new SocialDay[]{
+                    new SocialDay("25/08/2025", "-Casa", "Pecém", "Taíba"),
+                    new SocialDay("26/08/2025", "-Taíba", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
