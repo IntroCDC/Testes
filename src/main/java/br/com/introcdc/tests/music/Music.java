@@ -265,7 +265,7 @@ public enum Music {
     TESTE_DE_VOZ("Teste de voz", false, "31/08/2024 - 04:37", 1, 15, 1, new String[]{"voz"}, new String[]{}, new String[]{}),
     TEXTAO_EM_PIANO("Textão em Piano", false, "10/07/2024 - 22:53", 0, 60, 1, new String[]{"piano", "desabafo", "eduarda"}, new String[]{}, new String[]{}),
     TEXTAO_EM_SERTANEJO("Textão em Sertanejo", false, "10/07/2024 - 22:52", 0, 59, 1, new String[]{"sertanejo", "desabafo", "eduarda"}, new String[]{}, new String[]{}),
-    THE_END("The End", false, "05/02/2025 - 01:29", 2, 64, 4, new String[]{"piano", "eduarda", "instrumental"}, new String[]{"The End (Versão Metal)"}, new String[]{}),
+    THE_END("The End", false, "05/02/2025 - 01:29", 2, 64, 4, new String[]{"piano", "eduarda", "instrumental"}, new String[]{"The End (Versão Metal)", "The End (Versão Arrocha)"}, new String[]{"The End (Versão Arrocha 1)"}),
     TIA_FOFA("Tia Fofa", false, "29/12/2024 - 14:07", 2, 20, 1, new String[]{"sertanejo", "tia fofa", "eduarda", "lucas moreira", "gabriel", "praia de iracema"}, new String[]{}, new String[]{}),
     TODO_MUNDO("Todo Mundo", false, "04/07/2024 - 13:04", 0, 49, 1, new String[]{"regional", "instrumental"}, new String[]{}, new String[]{}),
     TODOS_NA_SALA("Todos na Sala", false, "01/01/2025 - 15:01", 2, 38, 1, new String[]{"reggae", "praia de iracema", "eduarda", "bruno", "lucas moreira", "gabriel", "lorena", "luciene", "tia fofa"}, new String[]{}, new String[]{}),

@@ -30,7 +30,7 @@ public class ForumTagHistory {
     private JTextArea statusArea;
 
     public static void main(String[] args) throws Exception {
-        ForumMethods.initializeForum();
+        OldForumMethods.initializeForum();
         SwingUtilities.invokeLater(() -> {
             try {
                 new ForumTagHistory().start();
