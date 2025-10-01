@@ -389,6 +389,7 @@ public enum SocialDistance {
     CASA_CEATD("Casa", "CEATD", 8500),
     CEATD_APARTAMENTO("CEATD", "Apartamento", 8800),
     CASA_PECEM("Casa", "Pecém", 51400),
+    APARTAMENTO_FUZUEBAR("Apartamento", "Fuzue Bar", 1400),
     ;
 
     private final String locationOne;

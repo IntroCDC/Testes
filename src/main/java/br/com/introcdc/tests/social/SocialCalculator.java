@@ -31,7 +31,7 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "14/09/2025 - 13:30 (Apartamento)";
+    public static String LK = "27/09/2025 - 22:16 (Casa Eduarda)";
 
     public static String LS_B = """
             #1 29/09/2023 - 16:00 (Apartamento)
@@ -46,7 +46,9 @@ public class SocialCalculator {
             #10 25/07/2025 - 13:00 (Apartamento)
             #11 04/08/2025 - 03:15 (Apartamento)
             #12 18/04/2025 - 17:03 (Apartamento)
-            #13 31/08/2025 - 00:30 (Apartamento)""";
+            #13 31/08/2025 - 00:30 (Apartamento)
+            #14 26/09/2025 - 13:00 (Apartamento) //
+            #15 27/09/2025 - 00:30 (Apartamento)""";
 
     public static String LS = """
             #1 08/10/2023 - 14:00 (Apartamento - Umbrella)
