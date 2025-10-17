@@ -152,7 +152,7 @@ public class MusicOrganizer {
             }
             fileName = fileName.split(" \\(")[0];
             fileName = fileName.replace(".mp3", ".png");
-            File cover = new File(file.getName().startsWith("Mister IA") && MISTER_IA ? pngfolder.getParentFile() : pngfolder, StringComponents.removeAcents(fileName) + (fileName.endsWith(".png") ? "" : ".png"));
+            File cover = new File(file.getName().startsWith("Mister IA") && MISTER_IA ? pngfolder.getParentFile() : pngfolder, StringComponents.removeAcents(fileName.replace("3.5", "35")) + (fileName.endsWith(".png") ? "" : ".png"));
             if (!cover.exists()) {
                 System.out.println("cover não encontrado " + file.getName() + " - " + cover.getName());
                 continue;

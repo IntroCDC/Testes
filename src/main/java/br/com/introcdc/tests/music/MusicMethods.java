@@ -49,6 +49,7 @@ public class MusicMethods {
                         Music.GOSTO_DE_COCO,
                         Music.INTRO_NA_CHAMADA,
                         Music.SETE_NA_CHAMADA,
+                        Music.TUBARAO,
                         Music.CHEGOU_O_REMEDIO,
                         Music.ESCOVANDO_OS_DENTES,
                         Music.ONI_CHAN,
@@ -69,11 +70,17 @@ public class MusicMethods {
                         Music.PARABENS_DE_KOS,
                         Music.PARABENS_KOS,
                         Music.PRIMEIRO_DE_ABRIL,
+                        Music.GALOPA_PRO_KINDOME,
                         Music.ARROCHA_DO_MARIAUM,
                         Music.PARABENS_GABRIEL,
+                        Music.MELO_DO_INTRO,
+                        Music.IVR,
                         Music.TORNEIO_DE_YOUTUBERS,
                         Music.GOSTOSINHO,
-                        Music.OPRESSOR_DEPRECIADOR)
+                        Music.OPRESSOR_DEPRECIADOR,
+                        Music.LEI_DE_GAGA,
+                        Music.COCO_BEM_SOLTO,
+                        Music.NIGHT)
         );
         Map<Integer, Integer> amount = new HashMap<>();
         System.out.println("\uD83D\uDD13 As Desbloqueadas: (" + unlocked.size() + "/" + Music.values().length + ")");
