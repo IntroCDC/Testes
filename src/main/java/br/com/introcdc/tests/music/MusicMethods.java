@@ -138,6 +138,11 @@ public class MusicMethods {
                 tags.add(tag);
             }
             musicObject.add("tags", tags);
+            JsonArray instruments = new JsonArray();
+            for (String instrument : music.getInstruments()) {
+                instruments.add(instrument);
+            }
+            musicObject.add("instruments", instruments);
             jsonObject.add(music.getMusicName(), musicObject);
         }
         System.out.println(jsonObject);

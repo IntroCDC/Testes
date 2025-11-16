@@ -676,6 +676,24 @@ public enum SocialRegister {
             new SocialDay[]{
                     new SocialDay("11/10/2025", "-Casa", "Apartamento"),
                     new SocialDay("12/10/2025", "-Apartamento", "-Casa")
+            }),
+    E128(128, "Um Quase Halloween",
+            new SocialDay[]{
+                    new SocialDay("22/10/2025", "-Casa", "Casa Eduarda", "Apartamento"),
+                    new SocialDay("23/10/2025", "-Apartamento", "Casa", "Iguatemi", "Apartamento", "Praia de Iracema", "Apartamento"),
+                    new SocialDay("24/10/2025", "-Apartamento", "-Clinica Unimed", "-Casa", "Apartamento", "Mercado Pinheiro", "Apartamento"),
+                    new SocialDay("25/10/2025", "-Apartamento", "Praia de Iracema", "Apartamento", "-Casa", "-Castelão (Flamengo)", "-Casa", "Apartamento"),
+                    new SocialDay("26/10/2025", "-Apartamento", "-Casa", "-Apartamento"),
+                    new SocialDay("27/10/2025", "-Apartamento", "Casa Eduarda", "-Casa")
+            }),
+    E129(129, "Um Picnic no Porto das Dunas",
+            new SocialDay[]{
+                    new SocialDay("07/11/2025", "-Casa", "Ibis", "Apartamento", "São Luiz", "Apartamento"),
+                    new SocialDay("08/11/2025", "-Apartamento"),
+                    new SocialDay("09/11/2025", "-Apartamento", "Porto das Dunas", "Apartamento", "-Casa", "-Castelão (Grêmio)", "-Casa"),
+                    new SocialDay("10/11/2025", "-Casa", "Apartamento"),
+                    new SocialDay("11/11/2025", "-Apartamento", "Praia de Iracema", "Apartamento", "-Casa Luciano", "-Casa", "Apartamento"),
+                    new SocialDay("12/11/2025", "-Apartamento", "Casa", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
