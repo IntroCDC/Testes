@@ -3,6 +3,11 @@ package br.com.introcdc.tests.social;
  * Written by IntroCDC, Bruno Coelho at 08/07/2024 - 10:27
  */
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -31,7 +36,7 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "12/11/2025 - 03:03 (Casa Eduarda)";
+    public static String LK = "24/11/2025 - 00:41 (Casa Eduarda)";
 
     public static String LS_B = """
             #1 29/09/2023 - 16:00 (Apartamento)
@@ -55,7 +60,9 @@ public class SocialCalculator {
             #19 23/10/2025 - 18:30 (Apartamento)
             #20 27/10/2025 - 01:30 (Apartamento) //
             #21 27/10/2025 - 07:30 (Apartamento)
-            #22 10/11/2025 - 09:20 (Apartamento) //""";
+            #22 10/11/2025 - 09:20 (Apartamento) //
+            #23 22/11/2025 - 07:55 (Casa) //
+            #24 23/11/2025 - 08:15 (Casa) //""";
 
     public static String LS = """
             #1 08/10/2023 - 14:00 (Apartamento - Quarto (Umbrella))
@@ -143,7 +150,163 @@ public class SocialCalculator {
         if (FILE) {
             printWriter.flush();
             printWriter.close();
+
+            JsonObject json = createJson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try (BufferedWriter jsonWriter = new BufferedWriter(
+                    new OutputStreamWriter(
+                            new FileOutputStream("F:/IntroCDC/assets/ajax/info.json"),
+                            StandardCharsets.UTF_8
+                    )
+            )) {
+                gson.toJson(json, jsonWriter);
+            }
         }
+    }
+
+    public static JsonObject createJson() {
+        JsonObject root = new JsonObject();
+
+        // ==== META / VISÃO GERAL ====
+        JsonObject meta = new JsonObject();
+        meta.addProperty("firstDay", FIRST_DAY);
+        meta.addProperty("lastDay", LAST_DAY);
+        meta.addProperty("currentDay", CURRENT_DAY);
+
+        if (FIRST_DAY != null && CURRENT_DAY != null) {
+            meta.addProperty("daysKnown", calculateDaysBetween(FIRST_DAY, CURRENT_DAY));
+        }
+
+        meta.addProperty("uniqueDays", DAYS_TOGETHER + DAYS_AWAY);
+        meta.addProperty("daysTogether", DAYS_TOGETHER);
+        meta.addProperty("daysAway", DAYS_AWAY);
+        meta.addProperty("daysBetweenSum", DAYS_BETWEEN);
+        meta.addProperty("totalDistanceMeters", TOTAL_DISTANCE);
+        meta.addProperty("totalDistanceKm", TOTAL_DISTANCE / 1000.0);
+        root.add("meta", meta);
+
+        // ==== TEXTOS ESPECIAIS ====
+        JsonObject notes = new JsonObject();
+        notes.addProperty("lk", LK);
+        notes.addProperty("ls", LS);
+        notes.addProperty("ls_b", LS_B);
+        root.add("notes", notes);
+
+        // ==== ESTATÍSTICAS AGREGADAS ====
+        JsonObject stats = new JsonObject();
+        stats.add("daysTogetherHistogram", mapToJson(DAYS_TOGETHER_TIMES));
+        stats.add("daysBetweenHistogram", mapToJson(DAYS_BETWEEN_TIMES));
+        stats.add("placesCount", mapToJson(PLACES_TIMES));
+        stats.add("placesNightCount", mapToJson(PLACES_NIGHT_TIMES));
+        stats.add("perYear", mapToJson(PER_YEAR));
+        stats.add("perMonth", mapToJson(PER_MONTH));
+        stats.add("perDayOfMonth", mapToJson(PER_DAY));
+        root.add("stats", stats);
+
+        // ==== TIMELINE COMPLETA ====
+        JsonArray timeline = new JsonArray();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (SocialRegister register : SocialRegister.values()) {
+            JsonObject regJson = new JsonObject();
+            regJson.addProperty("id", register.name());
+            regJson.addProperty("number", register.getNumber());
+            regJson.addProperty("title", register.getTitle());
+            regJson.addProperty("daysCount", register.getDays().length);
+            regJson.addProperty("totalDistanceMeters", register.getTotalDistance());
+            regJson.addProperty("totalDistanceKm", register.getTotalDistance() / 1000.0);
+
+            JsonArray daysJson = new JsonArray();
+            SocialDay[] days = register.getDays();
+
+            for (int i = 0; i < days.length; i++) {
+                SocialDay day = days[i];
+                JsonObject dayJson = new JsonObject();
+
+                dayJson.addProperty("index", i + 1);
+                dayJson.addProperty("date", day.getDay());
+
+                // Detalhes de data
+                try {
+                    LocalDate date = LocalDate.parse(day.getDay(), formatter);
+                    dayJson.addProperty("year", date.getYear());
+                    dayJson.addProperty("month", date.getMonthValue());
+                    dayJson.addProperty("dayOfMonth", date.getDayOfMonth());
+                    dayJson.addProperty("weekday", date.getDayOfWeek().toString());
+                } catch (Exception ignored) {
+                    // Se der ruim na data, ignora e segue
+                }
+
+                // Lugares (raw + normalizado)
+                String[] places = day.getPlaces();
+                JsonArray placesRaw = new JsonArray();
+                JsonArray placesNorm = new JsonArray();
+                for (String place : places) {
+                    placesRaw.add(place);
+                    placesNorm.add(normalizePlace(place));
+                }
+                dayJson.add("places", placesRaw);
+                dayJson.add("placesNormalized", placesNorm);
+
+                // Segmentos (from -> to + distância)
+                JsonArray segments = new JsonArray();
+                int dayDistance = 0;
+
+                for (int j = 0; j < places.length - 1; j++) {
+                    String fromRaw = places[j];
+                    String toRaw = places[j + 1];
+
+                    int dist = SocialDistance.distance(fromRaw, toRaw);
+                    if (dist > 0) {
+                        dayDistance += dist;
+                    }
+
+                    JsonObject legJson = new JsonObject();
+                    legJson.addProperty("fromRaw", fromRaw);
+                    legJson.addProperty("toRaw", toRaw);
+                    legJson.addProperty("from", normalizePlace(fromRaw));
+                    legJson.addProperty("to", normalizePlace(toRaw));
+                    legJson.addProperty("distanceMeters", dist);
+                    legJson.addProperty("distanceKm", dist > 0 ? dist / 1000.0 : -1.0);
+
+                    segments.add(legJson);
+                }
+
+                dayJson.add("segments", segments);
+                dayJson.addProperty("distanceMeters", dayDistance);
+                dayJson.addProperty("distanceKm", dayDistance / 1000.0);
+
+                daysJson.add(dayJson);
+            }
+
+            regJson.add("days", daysJson);
+            timeline.add(regJson);
+        }
+
+        root.add("timeline", timeline);
+
+        return root;
+    }
+
+    private static <K> JsonObject mapToJson(Map<K, Integer> map) {
+        JsonObject obj = new JsonObject();
+        for (Map.Entry<K, Integer> entry : map.entrySet()) {
+            obj.addProperty(String.valueOf(entry.getKey()), entry.getValue());
+        }
+        return obj;
+    }
+
+    private static String normalizePlace(String raw) {
+        String s = raw;
+        if (s.startsWith("-")) {
+            s = s.substring(1);
+        }
+        int idx = s.indexOf(" (");
+        if (idx >= 0) {
+            s = s.substring(0, idx);
+        }
+        return s.trim();
     }
 
     public static int calculateDaysBetween(String startDateStr, String endDateStr) {

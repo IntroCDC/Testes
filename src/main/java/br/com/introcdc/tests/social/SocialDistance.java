@@ -54,7 +54,7 @@ public enum SocialDistance {
     TAIBA_PECEM("Taíba", "Pecém", 20000),
     PECEM_CASAEDUARDA("Pecém", "Casa Eduarda", 22500),
     IGUATEMI_CASAEDUARDA("Iguatemi", "Casa Eduarda", 70500),
-    CASA_GENTILANDIA("Casa", "Gentilandia", 700),
+    CASA_SUPERGENTILANDIA("Casa", "Super Gentilândia", 700),
     MONSENHORTABOSA_SMARTFIT("Monsenhor Tabosa", "Smart Fit", 1000),
     CASTELAO_IGUATEMI("Castelão", "Iguatemi", 9000),
     APARTAMENTO_UNIVERSALPARK("Apartamento", "Universal Park", 12100),
@@ -186,7 +186,6 @@ public enum SocialDistance {
     APARTAMENTO_CASTELLO("Apartamento", "Castello", 700),
     CASTELLO_KOSMICA("Castello", "Kosmica", 100),
     APARTAMENTO_NORTHSHOPPINGJOQUEI("Apartamento", "North Shopping Jóquei", 10400),
-    CASA_SUPERGENTILANDIA("Casa", "Super Gentilândia", 100),
     APARTAMENTO_COCOBAMBUCOFFEE("Apartamento", "Coco Bambu Coffee", 2200),
     COCOBAMBUCOFFEE_CASA("Coco Bambu Coffee", "Casa", 5900),
     CASA_ARENAPV("Casa", "Arena PV", 750),
@@ -335,7 +334,7 @@ public enum SocialDistance {
     DENTISTA_GRAUTECNICO("Dentista", "Grau Técnico", 2200),
     GRAUTECNICO_ALDEOTA("Grau Técnico", "Aldeota", 4300),
     ALDEOTA_CASA("Aldeota", "Casa", 4000),
-    GENTILANDIA_TERMINALANTONIOBEZERRA("Gentilandia", "Terminal Antônio Bezerra", 7000),
+    SUPERGENTILANDIA_TERMINALANTONIOBEZERRA("Super Gentilândia", "Terminal Antônio Bezerra", 7000),
     SAOLUIZ_PORTODASDUNAS("São Luiz", "Porto das Dunas", 29000),
     PORTODASDUNAS_APARTAMENTO("Porto das Dunas", "Apartamento", 29000),
     APARTAMENTO_PAODEACUCAR("Apartamento", "Pão de Açúcar", 2800),
@@ -394,6 +393,9 @@ public enum SocialDistance {
     CLINICAUNIMED_CASA("Clinica Unimed", "Casa", 4300),
     APARTAMENTO_CASALUCIANO("Apartamento", "Casa Luciano", 26700),
     CASALUCIANO_CASA("Casa Luciano", "Casa", 25500),
+    CASA_IRONJUNGLE("Casa", "Iron Jungle", 850),
+    IRONJUNGLE_SHOPPINGBENFICA("Iron Jungle", "Shopping Benfica", 800),
+    CASA_UNIVERSALPARK("Casa", "Universal Park", 12000),
     ;
 
     private final String locationOne;

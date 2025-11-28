@@ -62,7 +62,7 @@ public enum SocialRegister {
     E10(10, "Uma Derrota no Castelão",
             new SocialDay[]{
                     new SocialDay("03/11/2023", "-Casa", "-Iguatemi (Fábio)", "Casa Eduarda", "Casa"),
-                    new SocialDay("04/11/2023", "-Casa", "Gentilandia", "Casa", "Apartamento", "Krone", "Apartamento", "Monsenhor Tabosa", "Smart Fit", "Iguatemi", "Apartamento", "Casa"),
+                    new SocialDay("04/11/2023", "-Casa", "Super Gentilândia", "Casa", "Apartamento", "Krone", "Apartamento", "Monsenhor Tabosa", "Smart Fit", "Iguatemi", "Apartamento", "Casa"),
                     new SocialDay("05/11/2023", "-Casa", "Apartamento", "Krone", "Apartamento", "Castelão (Flamengo)", "Iguatemi", "Apartamento", "Casa Eduarda", "-Casa")
             }),
     E11(11, "Universal Park",
@@ -458,7 +458,7 @@ public enum SocialRegister {
             }),
     E86(86, "Café da Manhã em Casa",
             new SocialDay[]{
-                    new SocialDay("04/12/2024", "-Casa", "Grau Técnico", "Aldeota", "Casa", "Gentilandia", "Terminal Antônio Bezerra", "-Grau Técnico", "-Casa")
+                    new SocialDay("04/12/2024", "-Casa", "Grau Técnico", "Aldeota", "Casa", "Super Gentilândia", "Terminal Antônio Bezerra", "-Grau Técnico", "-Casa")
             }),
     E87(87, "Porto das Dunas com Eduarda e Lucas",
             new SocialDay[]{
@@ -694,6 +694,13 @@ public enum SocialRegister {
                     new SocialDay("10/11/2025", "-Casa", "Apartamento"),
                     new SocialDay("11/11/2025", "-Apartamento", "Praia de Iracema", "Apartamento", "-Casa Luciano", "-Casa", "Apartamento"),
                     new SocialDay("12/11/2025", "-Apartamento", "Casa", "Casa Eduarda", "-Casa")
+            }),
+    E130(130, "Um Universal Park em 2025",
+            new SocialDay[]{
+                    new SocialDay("21/11/2025", "Casa"),
+                    new SocialDay("22/11/2025", "-Casa", "Super Gentilândia", "Casa", "Iron Jungle", "-Casa", "Iron Jungle", "Shopping Benfica", "Casa", "Iguatemi"),
+                    new SocialDay("23/11/2025", "-Iguatemi", "Casa", "Universal Park", "Casa", "Ibis"),
+                    new SocialDay("24/11/2025", "-Ibis", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
