@@ -705,6 +705,11 @@ public enum SocialRegister {
     E131(131, "Ida para o North Shopping para Entrega",
             new SocialDay[]{
                     new SocialDay("28/11/2025", "-Casa", "North Shopping", "-Casa")
+            }),
+    E132(132, "Show do Gabriel e Jogo Brasileirão",
+            new SocialDay[]{
+                    new SocialDay("06/12/2025", "-Casa", "-Pague Menos", "Casa Eduarda", "Ibis", "Casa"),
+                    new SocialDay("07/12/2025", "-Casa", "Órbita Blue", "Casa", "Benfica", "Casa", "-RioMar Kennedy", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {

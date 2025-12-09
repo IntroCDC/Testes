@@ -396,6 +396,8 @@ public enum SocialDistance {
     CASA_IRONJUNGLE("Casa", "Iron Jungle", 850),
     IRONJUNGLE_SHOPPINGBENFICA("Iron Jungle", "Shopping Benfica", 800),
     CASA_UNIVERSALPARK("Casa", "Universal Park", 12000),
+    PAGUEMENOS_CASAEDUARDA("Pague Menos", "Casa Eduarda", 64000),
+    CASA_RIOMARKENNEDY("Casa", "RioMar Kennedy", 5000),
     ;
 
     private final String locationOne;
