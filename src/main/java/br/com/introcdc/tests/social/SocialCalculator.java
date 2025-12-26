@@ -63,7 +63,10 @@ public class SocialCalculator {
             #22 10/11/2025 - 09:20 (Apartamento) //
             #23 22/11/2025 - 07:55 (Casa) //
             #24 23/11/2025 - 08:15 (Casa) //
-            #25 06/12/2025 - 23:00 (Casa) //""";
+            #25 06/12/2025 - 23:00 (Casa) //
+            #26 24/12/2025 - 09:10 (Apartamento)
+            #27 25/12/2025 - 21:46 (CE-085) //
+            #28 26/12/2025 - 03:20 (São Gonçalo do Amarante) //""";
 
     public static String LS = """
             #1 08/10/2023 - 14:00 (Apartamento - Quarto (Umbrella))
@@ -76,7 +79,9 @@ public class SocialCalculator {
             #8 31/08/2025 - 00:30 (Apartamento - Quarto)
             #9 27/10/2025 - 07:30 (Apartamento - Quarto)
             #10 10/11/2025 - 09:20 (Apartamento - Banheiro)
-            #11 06/12/2025 - 23:00 (Casa - Quarto)""";
+            #11 06/12/2025 - 23:00 (Casa - Quarto)
+            #12 24/12/2025 - 09:10 (Apartamento - Quarto)
+            #13 26/12/2025 - 03:20 (São Gonçalo do Amarante - 3°36'40.6"S 38°58'14.5"W)""";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();

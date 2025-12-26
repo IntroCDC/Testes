@@ -714,6 +714,13 @@ public enum SocialRegister {
     E133(133, "Almoço no RioMar",
             new SocialDay[]{
                     new SocialDay("17/12/2025", "-Casa", "RioMar Kennedy", "-Casa")
+            }),
+    E134(134, "Natal de 2025",
+            new SocialDay[]{
+                    new SocialDay("23/12/2025", "-Casa", "Casa Eduarda"),
+                    new SocialDay("24/12/2025", "-Casa Eduarda", "Apartamento", "-Casa", "-Apartamento", "RioMar", "Apartamento", "Casa", "Casa Luciano"),
+                    new SocialDay("25/12/2025", "-Casa Luciano", "Casa", "Apartamento", "Casa Eduarda", "Casa Lucas", "Taíba"),
+                    new SocialDay("26/12/2025", "-Taíba", "Pecém", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "São Gonçalo do Amarante", "Casa Lucas", "Casa Eduarda", "-Casa")
             });
 
     public static SocialRegister byNumber(int number) {
