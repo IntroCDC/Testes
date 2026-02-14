@@ -730,7 +730,13 @@ public enum SocialRegister {
             new SocialDay[]{
                     new SocialDay("24/01/2026", "-Casa", "Casa Eduarda", "Ibis", "Apartamento", "-Casa", "-Apartamento", "Praia de Iracema", "São Luiz", "Apartamento", "Casa Tia Elenilda", "Apartamento", "Sitio Amigo Lenon"),
                     new SocialDay("25/01/2026", "-Sitio Amigo Lenon", "Apartamento", "Casa Eduarda", "-Casa")
-            });
+            }),
+    E137(137, "", new SocialDay[]{
+            new SocialDay("06/02/2026", "-Casa", "Casa Eduarda", "Shopping Benfica", "Apartamento"),
+            new SocialDay("07/02/2026", "-Apartamento", "-Casa", "Apartamento"),
+            new SocialDay("08/02/2026", "-Apartamento", "Casa", "Castelão (Ceará)", "Casa", "Apartamento"),
+            new SocialDay("09/02/2026", "-Apartamento", "Shopping Benfica", "Casa Eduarda", "-Casa")
+    });
 
     public static SocialRegister byNumber(int number) {
         for (SocialRegister register : values()) {
