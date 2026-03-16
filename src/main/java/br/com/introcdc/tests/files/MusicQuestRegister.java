@@ -4,9 +4,13 @@ package br.com.introcdc.tests.files;
  */
 
 import br.com.introcdc.tests.database.FileComponents;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +25,11 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.text.Normalizer;
 import java.util.*;
+import java.util.List;
 
 public class MusicQuestRegister {
+
+    private static final Gson GSON_PRETTY = new GsonBuilder().setPrettyPrinting().create();
 
     private static String normalizeForCompare(String text) {
         if (text == null) {
@@ -66,35 +73,50 @@ public class MusicQuestRegister {
         return a;
     }
 
+    // Helpers to replace org.json's optString and optInt
+    private static String optString(JsonObject obj, String key, String fallback) {
+        if (obj.has(key) && !obj.get(key).isJsonNull()) {
+            return obj.get(key).getAsString();
+        }
+        return fallback;
+    }
+
+    private static int optInt(JsonObject obj, String key, int fallback) {
+        if (obj.has(key) && !obj.get(key).isJsonNull()) {
+            return obj.get(key).getAsInt();
+        }
+        return fallback;
+    }
+
     public static void main(String[] args) {
         try {
             // Seleciona a pasta onde estão os arquivos MP3
             JFileChooser chooser = new JFileChooser();
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            int opcao = chooser.showOpenDialog(null);
-            if (opcao != JFileChooser.APPROVE_OPTION) {
+            int chooserOption = chooser.showOpenDialog(null);
+
+            if (chooserOption != JFileChooser.APPROVE_OPTION) {
                 System.out.println("Pasta não selecionada. Encerrando...");
                 return;
             }
-            File pastaSelecionada = chooser.getSelectedFile();
+            File selectedFolder = chooser.getSelectedFile();
 
             // Lista os arquivos MP3 na pasta selecionada
-            File[] arquivos = pastaSelecionada.listFiles(new FilenameFilter() {
+            File[] mp3Files = selectedFolder.listFiles(new FilenameFilter() {
                 public boolean accept(File dir, String name) {
                     return name.toLowerCase().endsWith(".mp3");
                 }
             });
 
-            if (arquivos == null || arquivos.length == 0) {
+            if (mp3Files == null || mp3Files.length == 0) {
                 System.out.println("Nenhum arquivo MP3 encontrado na pasta selecionada.");
                 return;
             }
 
             // Cria um Scanner para ler as entradas do usuário
-            Scanner scanner = new Scanner(System.in);
+            Scanner inputScanner = new Scanner(System.in);
 
-// Carrega (ou cria) o arquivo musicquest.json
-// Carrega (ou cria) o arquivo musicquest.json
+            // Carrega (ou cria) o arquivo musicquest.json
             File jsonFile = new File("musicquest.json");
             System.out.println("=== DIAGNÓSTICO DO ARQUIVO ===");
             System.out.println("Caminho: " + jsonFile.getAbsolutePath());
@@ -104,24 +126,24 @@ public class MusicQuestRegister {
                 System.out.println("Tamanho em disco: " + jsonFile.length() + " bytes.");
 
                 // Vamos ler na marra pra ver o que tem dentro
-                String conteudoReal = readTextFile(jsonFile);
+                String realContent = readTextFile(jsonFile);
                 System.out.println("--- CONTEÚDO QUE O JAVA LEU ---");
-                System.out.println(conteudoReal); // AQUI VAI MOSTRAR A VERDADE
+                System.out.println(realContent); // AQUI VAI MOSTRAR A VERDADE
                 System.out.println("-------------------------------");
             } else {
                 System.out.println("Status: O arquivo NÃO EXISTE (O Java tá cegueta ou tu não criou nessa pasta).");
                 System.out.println("Criando array vazio na memória...");
             }
 
-            JSONArray musicasJson = loadJsonArray(jsonFile);
-            System.out.println("Total de objetos entendidos pelo JSON: " + musicasJson.length());
+            JsonArray songsJsonArray = loadJsonArray(jsonFile);
+            System.out.println("Total de objetos entendidos pelo JSON: " + songsJsonArray.size());
             System.out.println("==============================");
 
             Set<String> existingKeys = new HashSet<>();
-            for (int i = 0; i < musicasJson.length(); i++) {
-                JSONObject obj = musicasJson.getJSONObject(i);
-                String regAuthor = obj.optString("author", "");
-                String regName = obj.optString("name", "");
+            for (int i = 0; i < songsJsonArray.size(); i++) {
+                JsonObject obj = songsJsonArray.get(i).getAsJsonObject();
+                String regAuthor = optString(obj, "author", "");
+                String regName = optString(obj, "name", "");
                 String key = buildSongKey(regAuthor, regName);
 
                 // Printa só pra gente ver se a IA tá lá (pode comentar depois)
@@ -134,97 +156,100 @@ public class MusicQuestRegister {
 
             // Determina o próximo ID com base no último registrado
             int nextID = 1;
-            for (int i = 0; i < musicasJson.length(); i++) {
-                JSONObject obj = musicasJson.getJSONObject(i);
-                int id = obj.getInt("ID");
+            for (int i = 0; i < songsJsonArray.size(); i++) {
+                JsonObject obj = songsJsonArray.get(i).getAsJsonObject();
+                int id = optInt(obj, "ID", 0);
                 if (id >= nextID) {
                     nextID = id + 1;
                 }
             }
 
             // Processa cada arquivo MP3 encontrado
-            for (File mp3 : arquivos) {
-                String nomeArquivo = mp3.getName();
+            for (File mp3File : mp3Files) {
+                String fileName = mp3File.getName();
                 // Remove a extensão ".mp3"
-                String nomeSemExtensao = nomeArquivo.substring(0, nomeArquivo.lastIndexOf("."));
+                String nameWithoutExtension = fileName.substring(0, fileName.lastIndexOf("."));
                 // Divide o nome usando " - " para obter author e nome da música
-                String[] partes = nomeSemExtensao.split("\\s+[-–]\\s+", 2);
-                if (partes.length < 2) {
-                    System.out.println("Formato do nome inválido: " + nomeArquivo);
+                String[] nameParts = nameWithoutExtension.split("\\s+[-–]\\s+", 2);
+
+                if (nameParts.length < 2) {
+                    System.out.println("Formato do nome inválido: " + fileName);
                     continue;
                 }
-                String autor = partes[0].trim();
-                String nomeMusica = partes[1].trim();
+                String authorName = nameParts[0].trim();
+                String songName = nameParts[1].trim();
 
                 // Se o nome da música contiver "(", corta a parte adicional
-                if (nomeMusica.contains("(")) {
-                    nomeMusica = nomeMusica.substring(0, nomeMusica.indexOf("(")).trim();
+                if (songName.contains("(")) {
+                    songName = songName.substring(0, songName.indexOf("(")).trim();
                 }
-                if (nomeMusica.contains("[")) {
-                    nomeMusica = nomeMusica.substring(0, nomeMusica.indexOf("[")).trim();
+                if (songName.contains("[")) {
+                    songName = songName.substring(0, songName.indexOf("[")).trim();
                 }
 
                 // Verifica se já existe uma música registrada com o mesmo author e name
-                String newKey = buildSongKey(autor, nomeMusica);
+                String newKey = buildSongKey(authorName, songName);
                 System.out.println("DEBUG -> Key Arquivo: [" + newKey + "]");
 
                 if (existingKeys.contains(newKey) && Boolean.FALSE) {
-                    System.out.println("Música já registrada: " + autor + " - " + nomeMusica);
-                    FileComponents.deleteFile(mp3);
+                    System.out.println("Música já registrada: " + authorName + " - " + songName);
+                    FileComponents.deleteFile(mp3File);
                     continue;
                 }
 
-                Desktop.getDesktop().open(mp3);
+                Desktop.getDesktop().open(mp3File);
                 // Solicita o tempo inicial para o corte (formato mm:ss ou segundos) para o arquivo atual
-                System.out.println("Arquivo: " + nomeArquivo);
+                System.out.println("Arquivo: " + fileName);
                 System.out.print("Informe o tempo inicial para o corte (mm:ss ou apenas segundos): ");
-                String tempoInicial = scanner.nextLine().trim();
+                String startTime = inputScanner.nextLine().trim();
+
                 // Se o usuário digitar apenas um número, converte para mm:ss
-                if (!tempoInicial.contains(":")) {
+                if (!startTime.contains(":")) {
                     try {
-                        int totalSegundos = Integer.parseInt(tempoInicial);
-                        int minutos = totalSegundos / 60;
-                        int segundos = totalSegundos % 60;
-                        tempoInicial = String.format("%02d:%02d", minutos, segundos);
+                        int totalSeconds = Integer.parseInt(startTime);
+                        int minutes = totalSeconds / 60;
+                        int seconds = totalSeconds % 60;
+                        startTime = String.format("%02d:%02d", minutes, seconds);
                     } catch (NumberFormatException e) {
-                        System.out.println("Formato de tempo inválido para o arquivo: " + nomeArquivo);
+                        System.out.println("Formato de tempo inválido para o arquivo: " + fileName);
                         continue;
                     }
                 }
 
                 // Define o nome do arquivo de saída (15 segundos)
-                String nomeSaida = "music" + nextID + ".mp3";
+                String outputFileName = "music" + nextID + ".mp3";
 
                 // Prepara o comando do FFmpeg para cortar 15 segundos a partir do tempo informado e reencodar para 128kbps
-                // Comando: ffmpeg -ss [tempoInicial] -i input.mp3 -t 15 -b:a 128k output.mp3
-                ProcessBuilder pb = new ProcessBuilder("ffmpeg", "-ss", tempoInicial, "-i", mp3.getAbsolutePath(), "-t", "15", "-b:a", "128k", nomeSaida);
-                pb.inheritIO(); // Redireciona a saída do processo para o console
-                Process process = pb.start();
+                // Comando: ffmpeg -ss [startTime] -i input.mp3 -t 15 -b:a 128k output.mp3
+                ProcessBuilder processBuilder = new ProcessBuilder("ffmpeg", "-ss", startTime, "-i", mp3File.getAbsolutePath(), "-t", "15", "-b:a", "128k", outputFileName);
+                processBuilder.inheritIO(); // Redireciona a saída do processo para o console
+                Process process = processBuilder.start();
                 int exitCode = process.waitFor();
+
                 if (exitCode == 0) {
-                    System.out.println("Arquivo processado: " + nomeSaida);
+                    System.out.println("Arquivo processado: " + outputFileName);
                 } else {
-                    System.out.println("Erro ao processar o arquivo: " + nomeArquivo);
+                    System.out.println("Erro ao processar o arquivo: " + fileName);
                     continue;
                 }
 
                 // Cria uma nova entrada para o JSON
-                JSONObject novaEntrada = new JSONObject();
-                novaEntrada.put("author", autor);
-                novaEntrada.put("name", nomeMusica);
-                novaEntrada.put("ID", nextID);
-                musicasJson.put(novaEntrada);
+                JsonObject newEntryObj = new JsonObject();
+                newEntryObj.addProperty("author", authorName);
+                newEntryObj.addProperty("name", songName);
+                newEntryObj.addProperty("ID", nextID);
+                songsJsonArray.add(newEntryObj);
 
                 nextID++; // Incrementa o ID para o próximo arquivo
                 existingKeys.add(newKey);
 
-                // Salva o arquivo musicquest.json atualizado
-                writeTextFile(jsonFile, musicasJson.toString(4));
-                FileComponents.deleteFile(mp3);
+                // Salva o arquivo musicquest.json atualizado formatado
+                writeTextFile(jsonFile, GSON_PRETTY.toJson(songsJsonArray));
+                FileComponents.deleteFile(mp3File);
             }
 
-            // Salva o arquivo musicquest.json atualizado
-            writeTextFile(jsonFile, musicasJson.toString(4));
+            // Salva o arquivo musicquest.json atualizado formatado no final também
+            writeTextFile(jsonFile, GSON_PRETTY.toJson(songsJsonArray));
 
             System.out.println("Processamento concluído.");
 
@@ -238,24 +263,23 @@ public class MusicQuestRegister {
             return "";
         }
 
-        byte[] bytes = Files.readAllBytes(file.toPath());
+        byte[] fileBytes = Files.readAllBytes(file.toPath());
 
         // 1. Tenta ler como UTF-8 (Padrãozão)
-        String texto = new String(bytes, StandardCharsets.UTF_8);
+        String textContent = new String(fileBytes, StandardCharsets.UTF_8);
 
         // Se o texto parecer "bêbado" (cheio de losangos ou caracteres nulos), tenta UTF-16LE
-        // O caractere '' ou muitos espaços vazios indicam que lemos errado.
-        if (texto.contains("\u0000") || texto.contains("†") || !texto.trim().startsWith("[")) {
+        if (textContent.contains("\u0000") || textContent.contains("†") || !textContent.trim().startsWith("[")) {
             System.out.println("DEBUG: O arquivo parece estar em UTF-16 (Coisa de Windows). Tentando converter...");
-            texto = new String(bytes, StandardCharsets.UTF_16LE);
+            textContent = new String(fileBytes, StandardCharsets.UTF_16LE);
         }
 
         // Se ainda assim não começar com [ ou {, tenta UTF-16BE (Big Endian)
-        if (!texto.trim().startsWith("[") && !texto.trim().startsWith("{")) {
-            texto = new String(bytes, StandardCharsets.UTF_16BE);
+        if (!textContent.trim().startsWith("[") && !textContent.trim().startsWith("{")) {
+            textContent = new String(fileBytes, StandardCharsets.UTF_16BE);
         }
 
-        return texto;
+        return textContent;
     }
 
     private static String decodeStrict(byte[] bytes, Charset charset) throws Exception {
@@ -272,7 +296,6 @@ public class MusicQuestRegister {
             decoder.onUnmappableCharacter(CodingErrorAction.REPLACE);
             return decoder.decode(ByteBuffer.wrap(bytes)).toString();
         } catch (Throwable t) {
-            // se até isso falhar (muito raro), cai pra ISO-8859-1
             return new String(bytes, StandardCharsets.ISO_8859_1);
         }
     }
@@ -287,45 +310,45 @@ public class MusicQuestRegister {
         );
     }
 
-    private static JSONArray cleanupAndCompactIds(File jsonFile, File outputFolder, Integer baseIdOverride) throws Exception {
+    private static JsonArray cleanupAndCompactIds(File jsonFile, File outputFolder, Integer baseIdOverride) throws Exception {
         if (!jsonFile.exists()) {
-            return new JSONArray();
+            return new JsonArray();
         }
 
-        JSONArray input = loadJsonArray(jsonFile);
+        JsonArray inputJsonArray = loadJsonArray(jsonFile);
 
-        ArrayList<JSONObject> items = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            Object v = input.get(i);
-            if (v instanceof JSONObject obj) {
-                items.add(obj);
+        List<JsonObject> jsonItems = new ArrayList<>();
+        for (int i = 0; i < inputJsonArray.size(); i++) {
+            JsonElement element = inputJsonArray.get(i);
+            if (element.isJsonObject()) {
+                jsonItems.add(element.getAsJsonObject());
             }
         }
 
         // Ordena por ID atual
-        items.sort(Comparator.comparingInt(o -> o.optInt("ID", Integer.MAX_VALUE)));
+        jsonItems.sort(Comparator.comparingInt(o -> optInt(o, "ID", Integer.MAX_VALUE)));
 
         // 1) Remove inválidos + apaga mp3 inválido
-        ArrayList<JSONObject> valid = new ArrayList<>();
-        for (JSONObject obj : items) {
-            int id = obj.optInt("ID", -1);
-            String author = obj.optString("author", "").trim();
-            String name = obj.optString("name", "").trim();
+        List<JsonObject> validItems = new ArrayList<>();
+        for (JsonObject obj : jsonItems) {
+            int currentId = optInt(obj, "ID", -1);
+            String currentAuthor = optString(obj, "author", "").trim();
+            String currentName = optString(obj, "name", "").trim();
 
-            File mp3File = new File(outputFolder, "music" + id + ".mp3");
+            File mp3File = new File(outputFolder, "music" + currentId + ".mp3");
 
-            boolean invalid =
-                    id <= 0 ||
-                            author.isEmpty() ||
-                            name.isEmpty() ||
-                            looksCorrupted(author) ||
-                            looksCorrupted(name) ||
-                            !mp3File.exists(); // se sumiu o mp3, remove do JSON também pra ficar consistente
+            boolean isInvalid =
+                    currentId <= 0 ||
+                            currentAuthor.isEmpty() ||
+                            currentName.isEmpty() ||
+                            looksCorrupted(currentAuthor) ||
+                            looksCorrupted(currentName) ||
+                            !mp3File.exists();
 
-            if (invalid) {
+            if (isInvalid) {
                 try {
-                    java.nio.file.Files.deleteIfExists(mp3File.toPath());
-                    System.out.println("Removido inválido: ID " + id + " | " + author + " - " + name);
+                    Files.deleteIfExists(mp3File.toPath());
+                    System.out.println("Removido inválido: ID " + currentId + " | " + currentAuthor + " - " + currentName);
                 } catch (Exception e) {
                     System.out.println("Falha ao apagar mp3 inválido: " + mp3File.getName());
                     e.printStackTrace();
@@ -333,54 +356,54 @@ public class MusicQuestRegister {
                 continue;
             }
 
-            valid.add(obj);
+            validItems.add(obj);
         }
 
-        JSONArray result = new JSONArray();
-        if (valid.isEmpty()) {
-            writeTextFile(jsonFile, result.toString(4));
+        JsonArray resultJsonArray = new JsonArray();
+        if (validItems.isEmpty()) {
+            writeTextFile(jsonFile, GSON_PRETTY.toJson(resultJsonArray));
             System.out.println("Não sobrou nenhuma música válida. x-x");
-            return result;
+            return resultJsonArray;
         }
 
         // 2) Define base: ou a que tu passou, ou o menor ID válido existente
-        int baseId = (baseIdOverride != null) ? baseIdOverride : valid.get(0).optInt("ID");
+        int baseId = (baseIdOverride != null) ? baseIdOverride : optInt(validItems.get(0), "ID", 1);
 
         // 3) Planeja renomeações e atualiza JSON
-        ArrayList<RenamePlan> renamePlans = new ArrayList<>();
+        List<RenamePlan> renamePlans = new ArrayList<>();
         int newId = baseId;
 
-        for (JSONObject obj : valid) {
-            int oldId = obj.optInt("ID");
+        for (JsonObject obj : validItems) {
+            int oldId = optInt(obj, "ID", -1);
             int targetId = newId;
 
-            if (oldId != targetId) {
-                File from = new File(outputFolder, "music" + oldId + ".mp3");
-                File to = new File(outputFolder, "music" + targetId + ".mp3");
-                renamePlans.add(new RenamePlan(from, to));
+            if (oldId != targetId && oldId != -1) {
+                File fromFile = new File(outputFolder, "music" + oldId + ".mp3");
+                File toFile = new File(outputFolder, "music" + targetId + ".mp3");
+                renamePlans.add(new RenamePlan(fromFile, toFile));
 
-                obj.put("ID", targetId);
+                obj.addProperty("ID", targetId);
             }
 
-            result.put(obj);
+            resultJsonArray.add(obj);
             newId++;
         }
 
         // 4) Renomeia em 2 fases (evita colisão tipo 1233->1232 enquanto 1232 ainda existe)
         for (RenamePlan plan : renamePlans) {
-            String tmpName = plan.from.getName() + ".tmp_" + UUID.randomUUID();
-            plan.tmp = new File(outputFolder, tmpName);
+            String tempName = plan.from.getName() + ".tmp_" + UUID.randomUUID();
+            plan.tmpFile = new File(outputFolder, tempName);
 
-            java.nio.file.Files.move(
+            Files.move(
                     plan.from.toPath(),
-                    plan.tmp.toPath(),
+                    plan.tmpFile.toPath(),
                     StandardCopyOption.REPLACE_EXISTING
             );
         }
 
         for (RenamePlan plan : renamePlans) {
-            java.nio.file.Files.move(
-                    plan.tmp.toPath(),
+            Files.move(
+                    plan.tmpFile.toPath(),
                     plan.to.toPath(),
                     StandardCopyOption.REPLACE_EXISTING
             );
@@ -388,47 +411,56 @@ public class MusicQuestRegister {
         }
 
         // 5) Salva JSON atualizado
-        writeTextFile(jsonFile, result.toString(4));
-        System.out.println("Compactação concluída. Total: " + result.length() + " músicas. KKKKKKKKKKKKK");
+        writeTextFile(jsonFile, GSON_PRETTY.toJson(resultJsonArray));
+        System.out.println("Compactação concluída. Total: " + resultJsonArray.size() + " músicas. KKKKKKKKKKKKK");
 
-        return result;
+        return resultJsonArray;
     }
 
-    private static JSONArray loadJsonArray(File jsonFile) throws Exception {
+    private static JsonArray loadJsonArray(File jsonFile) throws Exception {
         if (!jsonFile.exists()) {
-            return new JSONArray();
+            return new JsonArray();
         }
 
-        String text = readTextFile(jsonFile);
-        text = sanitizeJsonText(text);
+        String textContent = readTextFile(jsonFile);
+        textContent = sanitizeJsonText(textContent);
 
-        if (text.isEmpty()) {
-            return new JSONArray();
+        if (textContent.isEmpty()) {
+            return new JsonArray();
         }
 
-        Object parsed = new JSONTokener(text).nextValue();
+        try {
+            JsonElement parsedElement = JsonParser.parseString(textContent);
 
-        if (parsed instanceof JSONArray array) {
-            return array;
-        }
+            if (parsedElement.isJsonArray()) {
+                return parsedElement.getAsJsonArray();
+            }
 
-        if (parsed instanceof JSONObject object) {
-            // Se por algum motivo alguém salvou como objeto, tenta achar um array dentro
-            if (object.has("songs") && object.get("songs") instanceof JSONArray a) {
-                return a;
+            if (parsedElement.isJsonObject()) {
+                JsonObject jsonObject = parsedElement.getAsJsonObject();
+
+                // Se por algum motivo alguém salvou como objeto, tenta achar um array dentro
+                if (jsonObject.has("songs") && jsonObject.get("songs").isJsonArray()) {
+                    return jsonObject.get("songs").getAsJsonArray();
+                }
+                if (jsonObject.has("musics") && jsonObject.get("musics").isJsonArray()) {
+                    return jsonObject.get("musics").getAsJsonArray();
+                }
+                if (jsonObject.has("musicas") && jsonObject.get("musicas").isJsonArray()) {
+                    return jsonObject.get("musicas").getAsJsonArray();
+                }
+
+                // Se for um objeto único, embrulha num array pra não quebrar
+                JsonArray fallbackArray = new JsonArray();
+                fallbackArray.add(jsonObject);
+                return fallbackArray;
             }
-            if (object.has("musics") && object.get("musics") instanceof JSONArray a) {
-                return a;
-            }
-            if (object.has("musicas") && object.get("musicas") instanceof JSONArray a) {
-                return a;
-            }
-            // Se for um objeto único, embrulha num array pra não quebrar
-            return new JSONArray().put(object);
+        } catch (JsonSyntaxException e) {
+            System.out.println("Erro cabuloso ao ler o JSON: " + e.getMessage());
         }
 
         // Se não deu pra entender, volta vazio
-        return new JSONArray();
+        return new JsonArray();
     }
 
     private static String sanitizeJsonText(String text) {
@@ -461,8 +493,6 @@ public class MusicQuestRegister {
         if (text.indexOf('\uFFFD') >= 0) return true; // "?"
         if (text.contains("?")) return true;
 
-        // Se aparecer CJK/Hangul/Hiragana/Katakana, costuma ser “N?...”
-        // Se tu tiver músicas com japonês/chinês de propósito, remove esse bloco.
         for (int i = 0; i < text.length(); i++) {
             Character.UnicodeBlock block = Character.UnicodeBlock.of(text.charAt(i));
             if (block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS ||
@@ -482,7 +512,7 @@ public class MusicQuestRegister {
     private static class RenamePlan {
         final File from;
         final File to;
-        File tmp;
+        File tmpFile;
 
         RenamePlan(File from, File to) {
             this.from = from;

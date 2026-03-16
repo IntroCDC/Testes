@@ -401,6 +401,11 @@ public enum SocialDistance {
     PECEM_CASALUCAS("Pecém", "Casa Lucas", 21000),
     APARTAMENTO_CASATIAELENILDA("Apartamento", "Casa Tia Elenilda", 10500),
     APARTAMENTO_SITIOAMIGOLENON("Apartamento", "Sitio Amigo Lenon", 26600),
+    CASA_TRABALHOEDUARDA("Casa", "Trabalho Eduarda", 63600),
+    TRABALHOEDUARDA_CASAEDUARDA("Trabalho Eduarda", "Casa Eduarda", 20000),
+    TAIBA_IBIS("Taíba", "Ibis", 32900),
+    APARTAMENTO_TATUAGEMDAMAS("Apartamento", "Tatuagem Damas", 7000),
+    TATUAGEMDAMAS_CASA("Tatuagem Damas", "Casa", 1000),
     ;
 
     private final String locationOne;
