@@ -36,7 +36,7 @@ public class SocialCalculator {
 
     public static int TOTAL_DISTANCE = 0;
 
-    public static String LK = "08/03/2026 - 02:00 (Casa Eduarda)";
+    public static String LK = "14/04/2026 - 05:23 (Casa Eduarda)";
 
     public static String LS_B = """
             #1 29/09/2023 - 16:00 (Apartamento)
@@ -70,7 +70,9 @@ public class SocialCalculator {
             #29 25/01/2026 - 00:00 (Apartamento - Sala/Quarto) //
             #30 06/02/2026 - 22:30 (Apartamento - Quarto) //
             #31 20/02/2026 - 01:30 (Apartamento - Quarto) //
-            #32 07/03/2026 - 01:00 (Casa Eduarda) //""";
+            #32 07/03/2026 - 01:00 (Casa Eduarda) //
+            #33 11/04/2026 - 15:00 (Apartamento) //
+            #34 13/04/2026 - 14:07 (Apartamento) //""";
 
     public static String LS = """
             #1 08/10/2023 - 14:00 (Apartamento - Quarto (Umbrella))
@@ -87,7 +89,8 @@ public class SocialCalculator {
             #12 24/12/2025 - 09:10 (Apartamento - Quarto)
             #13 26/12/2025 - 03:20 (São Gonçalo do Amarante - 3°36'40.6"S 38°58'14.5"W)
             #14 06/02/2026 - 22:30 (Apartamento - Quarto)
-            #15 20/02/2026 - 01:30 (Apartamento - Varanda, Quarto)""";
+            #15 20/02/2026 - 01:30 (Apartamento - Varanda, Quarto)
+            #16 11/04/2026 - 15:00 (Apartamento - Quarto)""";
 
     public static final Map<Integer, Integer> DAYS_TOGETHER_TIMES = new HashMap<>();
     public static final Map<Integer, Integer> DAYS_BETWEEN_TIMES = new HashMap<>();

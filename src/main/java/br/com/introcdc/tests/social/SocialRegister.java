@@ -744,6 +744,13 @@ public enum SocialRegister {
     E139(139, "Pós Aniversário 27 Anos", new SocialDay[]{
             new SocialDay("07/03/2026", "-Casa", "Trabalho Eduarda", "Casa Eduarda", "Taíba", "Ibis", "Apartamento", "Tatuagem Damas", "-Casa", "-Tatuagem Damas", "Apartamento", "-Casa", "-Apartamento"),
             new SocialDay("08/03/2026", "-Apartamento", "Casa Eduarda", "-Casa")
+    }),
+    E140(140, "Falta no Trabalho", new SocialDay[]{
+            new SocialDay("10/04/2026", "-Casa", "Trabalho Eduarda", "Casa Eduarda"),
+            new SocialDay("11/04/2026", "-Casa Eduarda", "Ibis", "Apartamento", "RioMar", "Apartamento", "Praia de Iracema"),
+            new SocialDay("12/04/2026", "-Praia de Iracema", "Apartamento", "Praia de Iracema", "Apartamento", "Praia de Iracema", "Apartamento"),
+            new SocialDay("13/04/2026", "-Apartamento"),
+            new SocialDay("14/04/2026", "-Apartamento", "Hospital São Gonçalo", "Casa Eduarda", "-Casa"),
     });
 
     public static SocialRegister byNumber(int number) {

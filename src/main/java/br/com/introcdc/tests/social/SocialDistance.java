@@ -406,6 +406,8 @@ public enum SocialDistance {
     TAIBA_IBIS("Taíba", "Ibis", 32900),
     APARTAMENTO_TATUAGEMDAMAS("Apartamento", "Tatuagem Damas", 7000),
     TATUAGEMDAMAS_CASA("Tatuagem Damas", "Casa", 1000),
+    APARTAMENTO_HOSPITALSAOGONCALO("Apartamento", "Hospital São Gonçalo", 64700),
+    HOSPITALSAOGONCALO_CASAEDUARDA("Hospital São Gonçalo", "Casa Eduarda", 1800),
     ;
 
     private final String locationOne;
