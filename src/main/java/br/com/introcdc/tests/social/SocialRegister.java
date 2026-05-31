@@ -751,6 +751,12 @@ public enum SocialRegister {
             new SocialDay("12/04/2026", "-Praia de Iracema", "Apartamento", "Praia de Iracema", "Apartamento", "Praia de Iracema", "Apartamento"),
             new SocialDay("13/04/2026", "-Apartamento"),
             new SocialDay("14/04/2026", "-Apartamento", "Hospital São Gonçalo", "Casa Eduarda", "-Casa"),
+    }),
+    E141(141, "Um Furo no Pneu", new SocialDay[]{
+            new SocialDay("01/05/2026", "-Casa", "Casa Eduarda", "RioMar", "Apartamento"),
+            new SocialDay("02/05/2026", "-Apartamento", "-Casa", "-Castelão (Goiás)", "-Tio Lanches", "-Casa"),
+            new SocialDay("03/05/2026", "-Casa", "Apartamento", "RioMar", "Casa", "Apartamento"),
+            new SocialDay("04/05/2026", "-Apartamento", "Casa Eduarda", "-Casa")
     });
 
     public static SocialRegister byNumber(int number) {

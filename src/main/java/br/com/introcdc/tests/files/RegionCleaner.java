@@ -11,14 +11,14 @@ public class RegionCleaner {
 
     public static void main(String[] args) {
         // Coloque aqui a pasta "region" do mundo
-        File regionFolder = new File("C:/Kindome/servers/Creative/world/entities");
+        File regionFolder = new File("C:/Kindome/servers/Creative/world/poi");
 
         // true = apenas mostra o que seria deletado
         // false = deleta de verdade
         boolean dryRun = false;
 
-        int minRegion = -5;
-        int maxRegion = 4;
+        int minRegion = -4;
+        int maxRegion = 3;
 
         Pattern pattern = Pattern.compile("r\\.(-?\\d+)\\.(-?\\d+)\\.mca");
 
